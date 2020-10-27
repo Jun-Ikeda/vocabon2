@@ -8,7 +8,6 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'yellow',
-    alignItems: 'center',
     justifyContent: 'center',
   },
 });

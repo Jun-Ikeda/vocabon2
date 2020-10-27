@@ -34,22 +34,30 @@ const style = StyleSheet.create({
   },
 });
 
+/**
+ * Header Component
+ * @augments {Component<Props, State>}
+ * Usage :
+ * ```js
+ * <Header
+ *  style={style.header}
+ *  renderLeft={() => <Icon />}
+ *  renderTitle={() => <Text>Title</Text>}
+ *  titleStyle={{alignText: 'center'}} />
+ * ```
+ */
 class Header extends Component {
   renderComponents = (part) => {
-    try {
-      const { renderLeft, renderTitle, renderRight } = this.props;
-      switch (part) {
-        case 'left':
-          return renderLeft();
-        case 'title':
-          return renderTitle();
-        case 'right':
-          return renderRight();
-        default:
-          return null;
-      }
-    } catch (error) {
-      return null;
+    const { renderLeft, renderTitle, renderRight } = this.props;
+    switch (part) {
+      case 'left':
+        return renderLeft();
+      case 'title':
+        return renderTitle();
+      case 'right':
+        return renderRight();
+      default:
+        return null;
     }
   };
 
@@ -141,17 +149,17 @@ Header.propTypes = {
 
 Header.defaultProps = {
   style: {},
-renderLeft:
-renderTitle: 
-renderRight:
-renderAll:
-large: false,
-onPressLeft: () => {},
-onLongPressLeft: () => {},
-onPressTitle: () => {},
-onLongPressTitle:() => {},
-onPressRight:() => {},
-onLongPressRight:() => {},
-}
+  renderLeft: () => null,
+  renderTitle: () => null,
+  renderRight: () => null,
+  renderAll: () => { throw new Error('the function is null'); },
+  large: false,
+  onPressLeft: () => {},
+  onLongPressLeft: () => {},
+  onPressTitle: () => {},
+  onLongPressTitle: () => {},
+  onPressRight: () => {},
+  onLongPressRight: () => {},
+};
 
 export default Header;

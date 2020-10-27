@@ -6,6 +6,7 @@ import {
 import Icon from '../src/components/Icon';
 import Background from '../src/components/Background';
 import PracticeNavigator from './Practice/PracticeNavigator';
+import Header from '../src/components/header/Header';
 
 /* import Item from '../src/components/item/Item';
 import ItemWithIcon from '../src/components/item/ItemWithIcon';
@@ -18,6 +19,9 @@ import PopUpMenuWithItems from '../src/components/menu/PopUpMenuWithItems'; */
 const style = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  header: {
+    backgroundColor: 'blue',
   },
   // item: {
   //   borderWidth: 1,
@@ -56,12 +60,20 @@ class Demo extends Component {
     />
   )
 
+  renderHeader = () => (
+    <Header
+      style={style.header}
+      renderLeft={this.renderIcons}
+    />
+  )
+
   render() {
     return (
       <View style={style.container}>
         {/* {this.renderPracticeNavigator()} */}
         {/* {this.renderIcons()} */}
-        {this.renderBackground()}
+        {/* {this.renderBackground()} */}
+        {this.renderHeader()}
       </View>
     );
   }
