@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import {
+  View, Text, StyleSheet, Image,
+} from 'react-native';
+import PropTypes from 'prop-types';
 
 import Color from '../config/Color';
 import { Functions } from '../config/Const';
@@ -13,25 +16,6 @@ const style = StyleSheet.create({
 });
 
 class UserIcon extends Component {
-  render() {
-    const { style: propsStyle, size } = this.props;
-    return (
-      <View
-        style={[
-          style.container,
-          propsStyle,
-          {
-            height: size,
-            width: size,
-            borderRadius: size / 2,
-          },
-        ]}
-      >
-        {this.renderContent()}
-      </View>
-    );
-  }
-
   renderContent = () => {
     try {
       const {
@@ -99,6 +83,37 @@ class UserIcon extends Component {
       return null;
     }
   };
+
+  render() {
+    const { style: propsStyle, size } = this.props;
+    return (
+      <View
+        style={[
+          style.container,
+          propsStyle,
+          {
+            height: size,
+            width: size,
+            borderRadius: size / 2,
+          },
+        ]}
+      >
+        {this.renderContent()}
+      </View>
+    );
+  }
 }
+
+UserIcon.propTypes = {
+  user: PropTypes.object.isRequired,
+  style: PropTypes.object,
+  size: PropTypes.number,
+
+};
+
+UserIcon.defaultProps = {
+  style: {},
+  size: 28,
+};
 
 export default UserIcon;

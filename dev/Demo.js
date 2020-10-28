@@ -7,6 +7,7 @@ import Icon from '../src/components/Icon';
 import Background from '../src/components/Background';
 import PracticeNavigator from './Practice/PracticeNavigator';
 import Header from '../src/components/header/Header';
+import HeaderWithBack from '../src/components/header/HeaderWithBack';
 
 /* import Item from '../src/components/item/Item';
 import ItemWithIcon from '../src/components/item/ItemWithIcon';
@@ -61,10 +62,11 @@ class Demo extends Component {
   )
 
   renderHeader = () => (
-    <Header
-      style={style.header}
-      renderLeft={this.renderIcons}
-    />
+    // <Header
+    //   style={style.header}
+    //   renderLeft={this.renderIcons}
+    // />
+    <HeaderWithBack style={style.header} large={false} />
   )
 
   render() {

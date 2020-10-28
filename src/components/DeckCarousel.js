@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-// import Carousel, { Pagination } from 'react-native-snap-carousel';
+import {
+  View, Text, StyleSheet, Image,
+} from 'react-native';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Color from '../config/Color';
@@ -32,40 +34,32 @@ class DeckCarousel extends Component {
     };
   }
 
-  render() {
+  componentDidUpdate(prevProps) {
     const { data } = this.props;
-    const {
-      layout: { width },
-      active,
-    } = this.state;
-    try {
-      return (
-        <View
-          onLayout={({ nativeEvent }) => {
-            const { height, width } = nativeEvent.layout;
-            this.setState({ layout: { height, width } });
-          }}
-        >
-          {/* <Carousel
-            data={data}
-            renderItem={this.renderItem}
-            itemWidth={width * 0.6}
-            sliderWidth={width * 1.0}
-            onSnapToItem={index => this.setState({ active: index })}
-            ref={carouselRef => {
-              this.carouselRef = carouselRef;
-            }}
-          />
-          <Pagination
-            dotsLength={data.length}
-            activeDotIndex={active}
-            containerStyle={{ paddingVertical: 15 }}
-            dotStyle={{ backgroundColor: Color.font3 }}
-          /> */}
-          {this.renderButtons()}
-        </View>
-      );
-    } catch (error) {
+    if (data !== prevProps.data) {
+      try {
+        for (const child of data) {
+          const id = Object.keys(child)[0];
+          const deckinfo = Object.values(child)[0];
+          this.setState(async (prev) => {
+            const prevState = prev;
+            const v = await Deck.loadV({ deckid: id });
+            prevState.v[id] = v;
+            return { v: prevState.v };
+          });
+          User.load({ uid: deckinfo.user }).then((user) => {
+            this.setState((prev) => {
+              const newUsers = { ...prev.user };
+              newUsers[id] = user;
+              return { user: newUsers };
+            });
+          });
+        }
+        return null;
+      } catch (error) {
+        return null;
+      }
+    } else {
       return null;
     }
   }
@@ -129,36 +123,6 @@ class DeckCarousel extends Component {
     }
   };
 
-  componentDidUpdate(prevProps) {
-    const { data } = this.props;
-    if (data !== prevProps.data) {
-      try {
-        for (const child of data) {
-          const id = Object.keys(child)[0];
-          const deckinfo = Object.values(child)[0];
-          this.setState(async prev => {
-            const prevState = prev;
-            const v = await Deck.loadV({ deckid: id });
-            prevState.v[id] = v;
-            return { v: prevState.v };
-          });
-          User.load({ uid: deckinfo.user }).then(user => {
-            this.setState(prev => {
-              const newUsers = { ...prev.user };
-              newUsers[id] = user;
-              return { user: newUsers };
-            });
-          });
-        }
-        return null;
-      } catch (error) {
-        return null;
-      }
-    } else {
-      return null;
-    }
-  }
-
   renderButtons = () => (
     <View>
       {this.renderNext()}
@@ -190,6 +154,44 @@ class DeckCarousel extends Component {
       </TouchableOpacity>
     );
   };
+
+  render() {
+    const { data } = this.props;
+    const {
+      layout: { width },
+      active,
+    } = this.state;
+    try {
+      return (
+        <View
+          onLayout={({ nativeEvent }) => {
+            const { height, width } = nativeEvent.layout;
+            this.setState({ layout: { height, width } });
+          }}
+        >
+          <Carousel
+            data={data}
+            renderItem={this.renderItem}
+            itemWidth={width * 0.6}
+            sliderWidth={width * 1.0}
+            onSnapToItem={(index) => this.setState({ active: index })}
+            ref={(carouselRef) => {
+              this.carouselRef = carouselRef;
+            }}
+          />
+          <Pagination
+            dotsLength={data.length}
+            activeDotIndex={active}
+            containerStyle={{ paddingVertical: 15 }}
+            dotStyle={{ backgroundColor: Color.font3 }}
+          />
+          {this.renderButtons()}
+        </View>
+      );
+    } catch (error) {
+      return null;
+    }
+  }
 }
 
 export default DeckCarousel;
