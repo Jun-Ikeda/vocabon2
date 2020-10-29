@@ -19,7 +19,7 @@ class Ikeda extends Component {
       // 長いから
       // だから、まずこうやってnavigationを取り出す。
 
-      navigation.navigate('kochiya');
+      navigation.navigate('ichikawa');
       // そのあとでnavigation.navigate()をする。
       // こうすることで、何回か書く場合も、毎回this.props.navigation.navigate()という長い関数はいらなくなる。
       // 二回目以降もnavigation.navigate()で済む

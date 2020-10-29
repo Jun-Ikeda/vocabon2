@@ -22,10 +22,10 @@ class TextAutoAdjust extends Component {
         numberOfLines={numberOfLines}
         adjustsFontSizeToFit
         style={[this.CopyStyle, { fontSize: currentFont }]}
-        onTextLayout={e => {
+        onTextLayout={(e) => {
           const { lines } = e.nativeEvent;
           if (lines.length > numberOfLines) {
-            this.setState(prev => ({ currentFont: prev.currentFont - 1 }));
+            this.setState((prev) => ({ currentFont: prev.currentFont - 1 }));
           }
         }}
       >

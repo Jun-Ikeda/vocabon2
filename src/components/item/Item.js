@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  View, Text, TouchableOpacity, StyleSheet,
+} from 'react-native';
 
 import Color from '../../config/Color';
 
@@ -21,7 +23,9 @@ const style = StyleSheet.create({
 
 class Item extends Component {
   render() {
-    const { title, onPress, titleStyle, containerStyle, containerLine, containerLineB } = this.props;
+    const {
+      title, onPress, titleStyle, containerStyle, containerLine, containerLineB,
+    } = this.props;
     try {
       return (
         <TouchableOpacity

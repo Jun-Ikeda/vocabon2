@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, /* Text,  */View } from 'react-native';
 
+// import PracticeNavigator from './dev/Practice/PracticeNavigator';
+
+import Nav from './src/nav/Nav';
+
 import Demo from './dev/Demo';
 import ControlPanel from './dev/ControlPanel';
 
@@ -17,7 +21,7 @@ class App extends Component {
     return (
       <View style={style.container}>
         <View style={style.container}>
-          <Demo />
+          <Nav />
         </View>
         <ControlPanel />
       </View>

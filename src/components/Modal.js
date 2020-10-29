@@ -21,8 +21,19 @@ let counter = true;
 
 export default class Modal extends Component {
   // props: {isVisible, messageForPC, closeModal, onPressOutSide}
+  onPressOutSide = () => {
+    const { onPressOutSide, closeModal } = this.props;
+    try {
+      onPressOutSide();
+    } catch (error) {
+      closeModal();
+    }
+  };
+
   render() {
-    const { isVisible, messageForPC, closeModal, children } = this.props;
+    const {
+      isVisible, messageForPC, closeModal, children,
+    } = this.props;
     if (Platform.OS === 'web') {
       if (isVisible) {
         if (counter) {
@@ -53,15 +64,6 @@ export default class Modal extends Component {
       </OriginalModal>
     );
   }
-
-  onPressOutSide = () => {
-    const { onPressOutSide, closeModal } = this.props;
-    try {
-      onPressOutSide();
-    } catch (error) {
-      closeModal();
-    }
-  };
 }
 
 const styleModalWithImage = StyleSheet.create({

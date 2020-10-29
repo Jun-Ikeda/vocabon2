@@ -37,7 +37,7 @@ export const getRandomImage = async ({ word = '' }) => {
   await Unsplash.search
     .photos(searchWord, random2, 1)
     .then(toJson)
-    .then(json => {
+    .then((json) => {
       const uri = json.results[0].urls.regular;
       const shortened = uri.replace('https://images.unsplash.com/', '');
       const user = {

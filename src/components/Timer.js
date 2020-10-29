@@ -4,7 +4,7 @@ let timer = null;
 
 const Timer = {
   initTimer: async (_function, _onNoTimerset, setState) => {
-    const trySetState = data => {
+    const trySetState = (data) => {
       try {
         setState(data);
       } catch (error) {
@@ -32,7 +32,7 @@ const Timer = {
   },
 
   start: (_function, duaration, setState) => {
-    const trySetState = data => {
+    const trySetState = (data) => {
       try {
         setState(data);
       } catch (error) {
@@ -52,7 +52,7 @@ const Timer = {
     }, 1000);
   },
 
-  stop: _function => {
+  stop: (_function) => {
     clearInterval(timer);
     // console.log('stop was called');
     Storage.Function.save({ key: 'timerLimit', data: 0, merge: false });
@@ -63,7 +63,7 @@ const Timer = {
     }
   },
 
-  convertUnixTimeToYMDT: unix => {
+  convertUnixTimeToYMDT: (unix) => {
     const date = new Date(unix);
     return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
   },

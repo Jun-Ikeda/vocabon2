@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  View, Text, StyleSheet, TouchableOpacity,
+} from 'react-native';
 import { Functions, StyleConst } from '../../config/Const';
 
 const style = StyleSheet.create({
