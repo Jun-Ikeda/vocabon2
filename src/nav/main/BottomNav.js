@@ -5,6 +5,18 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import Template from '../../../dev/Template';
 
+// const renderIcon = ({ name: { ios: { active, inactive }, android }, tintColor, focused }) => {
+//   const iosIcon = focused ? active : inactive;
+//   const icon = Platform.OS === 'ios' ? iosIcon : android;
+//   return (
+//     <Icon
+//       size={25}
+//       icon={icon}
+//       style={{ color: tintColor }}
+//     />
+//   );
+// };
+
 export default createMaterialBottomTabNavigator(
   {
     Home: {

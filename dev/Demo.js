@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import {
-  View, StyleSheet, Text
+  View, StyleSheet, Text,
 } from 'react-native';
+import Header from '../src/components/header/Header';
 
-// import Icon from '../src/components/Icon';
+import Icon from '../src/components/Icon';
 // import Background from '../src/components/Background';
-import PracticeNavigator from './Practice/PracticeNavigator';
-import Play from './temp/Play';
+// import PracticeNavigator from './Practice/PracticeNavigator';
+// import Play from './temp/Play';
 // import Header from '../src/components/header/Header';
 // import HeaderWithBack from '../src/components/header/HeaderWithBack';
 
@@ -47,17 +48,17 @@ class Demo extends Component {
     };
   }
 
-  renderPracticeNavigator = () => (
-    <PracticeNavigator />
-  )
-
-  // renderIcons = () => (
-  //   <Icon.Ionicons name="ios-arrow-back" />
-  //   <Backgrounds
-  //     imageSource={{ uri: 'https://m.media-amazon.com/images/I/714TeAw75sL._SS500_.jpg' }}
-  //     imageStyle={{ height:
-  //   />
+  // renderPracticeNavigator = () => (
+  //   <PracticeNavigator />
   // )
+
+  renderIcons = () => (
+    <Icon.Ionicons name="ios-arrow-back" />
+    // <Backgrounds
+    //   imageSource={{ uri: 'https://m.media-amazon.com/images/I/714TeAw75sL._SS500_.jpg' }}
+    //   imageStyle={{ height:
+    // />
+  )
   // renderIconimg=() => {
   //   <View>
   //     <Image
@@ -70,13 +71,15 @@ class Demo extends Component {
   //   </View>
   // }
 
-  // renderHeader = () => (
-  //   // <Header
-  //   //   style={style.header}
-  //   //   renderLeft={this.renderIcons}
-  //   // />
-  //   <HeaderWithBack style={style.header} large={false} />
-  // )
+  renderHeader = () => (
+    <Header
+      style={style.header}
+      large
+      renderAll={() => <View style={{ flex: 1, backgroundColor: 'red' }} />}
+      renderLeft={this.renderIcons}
+    />
+    // <HeaderWithBack style={style.header} large={false} />
+  )
 
   render() {
     return (
@@ -84,9 +87,9 @@ class Demo extends Component {
         {/* {this.renderPracticeNavigator()} */}
         {/* {this.renderIcons()} */}
         {/* {this.renderBackground()} */}
-        {/* {this.renderHeader()} */}
+        {this.renderHeader()}
         {/* <Text>Gaku Nagata</Text> */}
-        <Play />
+        {/* <Play /> */}
       </View>
     );// renderPopUpMenu = () => {
     //   const { menuVisible } = this.state;
