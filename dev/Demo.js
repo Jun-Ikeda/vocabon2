@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import {
-  View/* , Text */, StyleSheet/* , TouchableOpacity */,
+  View, StyleSheet, Text
 } from 'react-native';
 
-import Icon from '../src/components/Icon';
-import Background from '../src/components/Background';
+// import Icon from '../src/components/Icon';
+// import Background from '../src/components/Background';
 import PracticeNavigator from './Practice/PracticeNavigator';
-import Header from '../src/components/header/Header';
-import HeaderWithBack from '../src/components/header/HeaderWithBack';
+import Play from './temp/Play';
+// import Header from '../src/components/header/Header';
+// import HeaderWithBack from '../src/components/header/HeaderWithBack';
 
 /* import Item from '../src/components/item/Item';
 import ItemWithIcon from '../src/components/item/ItemWithIcon';
@@ -50,24 +51,32 @@ class Demo extends Component {
     <PracticeNavigator />
   )
 
-  renderIcons = () => (
-    <Icon.Ionicons name="ios-arrow-back" />
-  )
+  // renderIcons = () => (
+  //   <Icon.Ionicons name="ios-arrow-back" />
+  //   <Backgrounds
+  //     imageSource={{ uri: 'https://m.media-amazon.com/images/I/714TeAw75sL._SS500_.jpg' }}
+  //     imageStyle={{ height:
+  //   />
+  // )
+  // renderIconimg=() => {
+  //   <View>
+  //     <Image
+  //       style={{
+  //         width: 64,
+  //         height: 64,
+  //       }}
+  //       source={require('/assets/background/KnowledgeSmall.jpg')}
+  //     />
+  //   </View>
+  // }
 
-  renderBackground = () => (
-    <Background
-      imageSource={{ uri: 'https://m.media-amazon.com/images/I/714TeAw75sL._SS500_.jpg' }}
-      imageStyle={{ height: 100, width: 100 }}
-    />
-  )
-
-  renderHeader = () => (
-    // <Header
-    //   style={style.header}
-    //   renderLeft={this.renderIcons}
-    // />
-    <HeaderWithBack style={style.header} large={false} />
-  )
+  // renderHeader = () => (
+  //   // <Header
+  //   //   style={style.header}
+  //   //   renderLeft={this.renderIcons}
+  //   // />
+  //   <HeaderWithBack style={style.header} large={false} />
+  // )
 
   render() {
     return (
@@ -75,55 +84,53 @@ class Demo extends Component {
         {/* {this.renderPracticeNavigator()} */}
         {/* {this.renderIcons()} */}
         {/* {this.renderBackground()} */}
-        {this.renderHeader()}
+        {/* {this.renderHeader()} */}
+        {/* <Text>Gaku Nagata</Text> */}
+        <Play />
       </View>
-    );
-  }
-
-  // renderPopUpMenu = () => {
-  //   const { menuVisible } = this.state;
-  //   return (
-  //     <View style={{ flex: 1 /* , backgroundColor: 'purple' */ }}>
-  //       <TouchableOpacity onPress={() => this.setState({ menuVisible: true })}>
-  //         <Text>a</Text>
-  //       </TouchableOpacity>
-  //       <PopUpMenuWithItems
-  //         isVisible={menuVisible}
-  //         setVisible={bool => this.setState({ menuVisible: bool })}
-  //         overlayStyle={{ backgroundColor: Color.background3 }}
-  //         items={[
-  //           {
-  //             title: 'test1',
-  //             onPress: () => {
-  //               console.log('test1');
-  //             },
-  //           },
-  //           {
-  //             title: 'test2aaaaaaaaaaaaaa',
-  //             onPress: () => {
-  //               console.log('test2');
-  //             },
-  //           },
-  //           {
-  //             title: 'test3',
-  //             onPress: () => {
-  //               console.log('test3');
-  //             },
-  //           },
-  //         ]}
-  //         renderMenu={() => (
-  //          <TouchableOpacity
-  //            onPress={() => console.log('test')}
-  //            style={{ height: 200, width: 150, backgroundColor: 'white' }}>
-  //            <Text>Contents</Text>
-  //          </TouchableOpacity>
-  //         )}
-  //       />
-  //     </View>
-  //   );
-  // };
-
-  // renderKeyCode = () => <textarea onKeyDown={e => props.onKeyDown(e)} />;
+    );// renderPopUpMenu = () => {
+    //   const { menuVisible } = this.state;
+    //   return (
+    //     <View style={{ flex: 1 /* , backgroundColor: 'purple' */ }}>
+    //       <TouchableOpacity onPress={() => this.setState({ menuVisible: true })}>
+    //         <Text>a</Text>
+    //       </TouchableOpacity>
+    //       <PopUpMenuWithItems
+    //         isVisible={menuVisible}
+    //         setVisible={bool => this.setState({ menuVisible: bool })}
+    //         overlayStyle={{ backgroundColor: Color.background3 }}
+    //         items={[
+    //           {
+    //             title: 'test1',
+    //             onPress: () => {
+    //               console.log('test1');
+    //             },
+    //           },
+    //           {
+    //             title: 'test2aaaaaaaaaaaaaa',
+    //             onPress: () => {
+    //               console.log('test2');
+    //             },
+    //           },
+    //           {
+    //             title: 'test3',
+    //             onPress: () => {
+    //               console.log('test3');
+    //             },
+    //           },
+    //         ]}
+    //         renderMenu={() => (
+    //          <TouchableOpacity
+    //            onPress={() => console.log('test')}
+    //            style={{ height: 200, width: 150, backgroundColor: 'white' }}>
+    //            <Text>Contents</Text>
+    //          </TouchableOpacity>
+    //         )}
+    //       />
+    //     </View>
+    //   );
+    // };
+    // renderKeyCode = () => <textarea onKeyDown={e => props.onKeyDown(e)} />;
 
   // renderItemComponent = () => (
   //   <View style={{ flex: 1 }}>
@@ -148,6 +155,7 @@ class Demo extends Component {
   //     /> */}
   //   </View>
   // );
+  }
 }
 
 export default Demo;

@@ -7,7 +7,7 @@ class PracticeIH extends Component {
       <View>
         <Text>( ^ω^ #)</Text>
         {/* <TouchableOpacity onPress={}>
-          <Text>(´Д` )</Text>
+          <Text>(´Д` )b</Text>
         </TouchableOpacity> */}
       </View>
     );

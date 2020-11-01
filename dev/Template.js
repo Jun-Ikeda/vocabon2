@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const style = StyleSheet.create({
   container: {
@@ -12,6 +12,7 @@ class Template extends Component {
     return (
       <View style={style.container}>
         <Text>This is Template screen!</Text>
+        <Text>hello!</Text>
       </View>
     );
   }

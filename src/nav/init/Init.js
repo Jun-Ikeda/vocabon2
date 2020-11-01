@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
-import Storage from '../../config/Storage';
+const style = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
-const icon = require('../../../assets/icon.png');
-
-export default class Init extends Component {
-  async UNSAFE_componentWillMount() {
+class Init extends Component {
+  componentDidMount() {
     const { navigation } = this.props;
-    await Storage.Function.load({ key: 'isInitialized' });
     navigation.navigate('launch');
   }
 
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Image
-          source={icon}
-          style={{ height: 128, width: 128, opacity: 0.2 }}
-        />
+      <View style={style.container}>
+        <Text>This is Init screen!</Text>
       </View>
     );
   }
 }
+
+Init.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
+
+export default Init;
