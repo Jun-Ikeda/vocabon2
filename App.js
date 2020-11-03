@@ -18,8 +18,8 @@ class App extends Component {
     return (
       <View style={style.container}>
         <View style={style.container}>
-          {/* <Nav /> */}
-          <Demo />
+          <Nav />
+          {/* <Demo /> */}
         </View>
         <ControlPanel />
       </View>
