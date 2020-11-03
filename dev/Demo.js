@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  View, StyleSheet, Text,
+  View, StyleSheet, /* Text, */
 } from 'react-native';
 import Header from '../src/components/header/Header';
 

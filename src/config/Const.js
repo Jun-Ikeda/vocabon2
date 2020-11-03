@@ -14,3 +14,5 @@ export const header = {
   heightMax: 96,
   heightMin: 48,
 };
+
+export default { header };

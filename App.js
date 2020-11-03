@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import Nav from './src/nav/Nav';
 
-import Demo from './dev/Demo';
+// import Demo from './dev/Demo';
 import ControlPanel from './dev/ControlPanel';
 
 const style = StyleSheet.create({
