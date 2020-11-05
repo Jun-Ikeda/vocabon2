@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 import Template from '../../../dev/Template';
 
+import HomeNav from './home/HomeNav';
 import SettingNav from './setting/SettingNav';
 
 const renderIcon = ({ ios: { active, inactive }, android }) => {
@@ -24,13 +25,10 @@ const renderIcon = ({ ios: { active, inactive }, android }) => {
 export default createMaterialBottomTabNavigator(
   {
     Home: {
-      screen: Template,
+      screen: HomeNav,
       navigationOptions: {
         tabBarLabel: 'Home',
         tabBarColor: '#842655',
-        // tabBarIcon: ({ tintColor, focused }) => (
-        // <Icon size={25} name={Platform.OS === 'ios' ? (focused ? 'ios-home' : 'ios-home-outline') : 'md-home'} style={{ color: tintColor }} />
-        // ),
         tabBarIcon: renderIcon({ ios: { active: 'ios-home', inactive: 'ios-home-outline' }, android: 'md-home' }),
       },
     },
@@ -39,9 +37,6 @@ export default createMaterialBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: 'Profile',
         tabBarColor: '#1e1e1d',
-        // tabBarIcon: ({ tintColor, focused }) => (
-        // <Icon size={25} name={Platform.OS === 'ios' ? (focused ? 'ios-contact' : 'ios-contact-outline') : 'md-contact'} style={{ color: tintColor }} />
-        // ),
         tabBarIcon: renderIcon({ ios: { active: 'ios-contact', inactive: 'ios-contact-outline' }, android: 'md-contact' }),
       },
     },
@@ -50,9 +45,6 @@ export default createMaterialBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: 'Settings',
         tabBarColor: '#ff3838',
-        // tabBarIcon: ({ tintColor, focused }) => (
-        // <Icon size={25} name={Platform.OS === 'ios' ? (focused ? 'ios-settings' : 'ios-settings-outline') : 'md-settings'} style={{ color: tintColor }} />
-        // ),
         tabBarIcon: renderIcon({ ios: { active: 'ios-settings', inactive: 'ios-settings-outline' }, android: 'md-settings' }),
       },
     },

@@ -20,7 +20,7 @@ const style = StyleSheet.create({
  * Usage :
  * ```js
  * <HeaderWithBack
- *  navigation={this.props.navigation}
+ *  navigation={this.props.navigation} !REQUIRED!
  *  titleStyle={}
  *  title={'Title'}
  *  iconStyle={}

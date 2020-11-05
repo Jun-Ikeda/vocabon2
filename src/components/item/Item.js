@@ -22,12 +22,38 @@ const style = StyleSheet.create({
   },
 });
 
+/**
+ * Item Component
+ * @augments {Component<Props, State>}
+ * Usage :
+ * ```js
+ * <Item
+ *  renderAbove={() => <View style={style.lineAbove}
+ *  renderLeft={() => <View style={style.elementLeft}
+ *  title="Title"
+ *  renderRight={() => <View style={style.elementRight}
+ *  renderBelow={() => <View style={style.lineAbove} />} />
+ * ```
+ */
 class Item extends Component {
-  renderLineBelow = () => {
-    const { renderBelow } = this.props;
+  renderLineAbove = () => {
+    const { renderAbove, lineStyle } = this.props;
     try {
       return (
-        <View style={[style.line]}>
+        <View style={[style.line, lineStyle]}>
+          {renderAbove()}
+        </View>
+      );
+    } catch (error) {
+      return null;
+    }
+  }
+
+  renderLineBelow = () => {
+    const { renderBelow, lineStyle } = this.props;
+    try {
+      return (
+        <View style={[style.line, lineStyle]}>
           {renderBelow()}
         </View>
       );
@@ -38,10 +64,10 @@ class Item extends Component {
 
   renderLine = () => {
     const {
-      renderLeft, renderRight, titleStyle, title,
+      renderLeft, renderRight, titleStyle, title, lineStyle,
     } = this.props;
     return (
-      <View style={[style.line]}>
+      <View style={[style.line, lineStyle]}>
         {renderLeft()}
         <View style={style.titleContainer}>
           <Text style={[style.title, titleStyle]}>{title}</Text>
@@ -60,6 +86,7 @@ class Item extends Component {
         style={[style.container, containerStyle]}
         onPress={onPress}
       >
+        {this.renderLineAbove()}
         {this.renderLine()}
         {this.renderLineBelow()}
       </TouchableOpacity>
@@ -71,8 +98,10 @@ Item.propTypes = {
   title: PropTypes.string,
   onPress: PropTypes.func,
   titleStyle: ViewPropTypes.style,
+  lineStyle: ViewPropTypes.style,
   containerStyle: ViewPropTypes.style,
   renderBelow: PropTypes.node,
+  renderAbove: PropTypes.node,
   renderRight: PropTypes.node,
   renderLeft: PropTypes.node,
 };
@@ -81,8 +110,10 @@ Item.defaultProps = {
   title: '',
   onPress: () => {},
   titleStyle: {},
+  lineStyle: {},
   containerStyle: {},
   renderBelow: () => { throw new Error('the function is null'); },
+  renderAbove: () => { throw new Error('the function is null'); },
   renderRight: () => null,
   renderLeft: () => null,
 };

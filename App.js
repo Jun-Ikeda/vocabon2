@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import Nav from './src/nav/Nav';
+// import Nav from './src/nav/Nav';
 
-// import Demo from './dev/Demo';
-import ControlPanel from './dev/ControlPanel';
+import SwitchDevPro from './SwitchDevPro';
 
 const style = StyleSheet.create({
   container: {
@@ -17,11 +16,7 @@ class App extends Component {
   render() {
     return (
       <View style={style.container}>
-        <View style={style.container}>
-          <Nav />
-          {/* <Demo /> */}
-        </View>
-        <ControlPanel />
+        <SwitchDevPro />
       </View>
     );
   }

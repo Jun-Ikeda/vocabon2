@@ -5,6 +5,7 @@ import {
 import Header from '../src/components/header/Header';
 
 import Icon from '../src/components/Icon';
+import TempComponent from '../src/components/TempComponent';
 // import Background from '../src/components/Background';
 // import PracticeNavigator from './Practice/PracticeNavigator';
 // import Play from './temp/Play';
@@ -59,6 +60,11 @@ class Demo extends Component {
     //   imageStyle={{ height:
     // />
   )
+
+  renderTempComponent = () => (
+    <TempComponent />
+  )
+
   // renderIconimg=() => {
   //   <View>
   //     <Image
@@ -87,11 +93,14 @@ class Demo extends Component {
         {/* {this.renderPracticeNavigator()} */}
         {/* {this.renderIcons()} */}
         {/* {this.renderBackground()} */}
-        {this.renderHeader()}
+        {/* {this.renderHeader()} */}
         {/* <Text>Gaku Nagata</Text> */}
         {/* <Play /> */}
+        {this.renderTempComponent()}
       </View>
-    );// renderPopUpMenu = () => {
+    );
+
+    // renderPopUpMenu = () => {
     //   const { menuVisible } = this.state;
     //   return (
     //     <View style={{ flex: 1 /* , backgroundColor: 'purple' */ }}>
