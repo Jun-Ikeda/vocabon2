@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import {
-  View, Text, StyleSheet, TouchableOpacity,
+  View, Text, StyleSheet, TouchableOpacity, ScrollView,
 } from 'react-native';
 
 import Nav from './src/nav/Nav';
 import Demo from './dev/Demo';
 import ControlPanel from './dev/ControlPanel';
+import Template from './dev/Template';
 
 const style = StyleSheet.create({
   container: {
     flex: 1,
   },
   buttonsContainer: {
-    flexDirection: 'row',
     borderWidth: 1,
-    justifyContent: 'space-around',
   },
   button: {
     borderWidth: 0.5,
@@ -23,85 +22,71 @@ const style = StyleSheet.create({
     marginHorizontal: 5,
     marginVertical: 2,
   },
-  devproContainer: {
-    // ...StyleSheet.absoluteFill,
-    position: 'absolute',
-    right: 0,
-    left: 0,
-    top: 0,
-    bottom: 0,
-  },
 });
+
+const buttons = [
+  { title: 'Production', element: <Nav /> },
+  { title: 'Develop', element: <Demo /> },
+  { title: 'Template', element: <Template /> },
+];
 
 class SwitchDevPro extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      proVisible: true,
-      devVisible: false,
+      visible: 0,
     };
   }
 
-    renderButtons = () => (
-      <View style={style.buttonsContainer}>
-        <TouchableOpacity
-          onPress={() => this.setState({ proVisible: true, devVisible: false })}
-          style={style.button}
-        >
-          <Text>Production Mode</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => this.setState({ proVisible: false, devVisible: true })}
-          style={style.button}
-        >
-          <Text>Develop Mode</Text>
-        </TouchableOpacity>
+  renderScreens = () => {
+    const { visible } = this.state;
+    return (
+      <View style={style.container}>
+        {buttons.map((button, index) => {
+          const isVisible = (index === visible);
+          return (
+            <View
+              style={[
+                { opacity: isVisible ? 1 : 0 },
+                StyleSheet.absoluteFill]}
+              pointerEvents={isVisible ? 'auto' : 'none'}
+            >
+              {button.element}
+            </View>
+          );
+        })}
       </View>
-    )
+    );
+  }
 
-    renderDevPro = () => {
-      const { proVisible, devVisible } = this.state;
-      return (
-        <View style={style.container}>
-          <View
-            style={[
-              { opacity: proVisible ? 1 : 0 },
-              StyleSheet.absoluteFill]}
-            pointerEvents={proVisible ? 'auto' : 'none'}
+  renderButtons = () => (
+    <View style={style.buttonsContainer}>
+      <ScrollView showsVerticalScrollIndicator={false} horizontal>
+        {buttons.map((button, index) => (
+          <TouchableOpacity
+            onPress={() => this.setState({ visible: index })}
+            style={style.button}
           >
-            <Nav />
-          </View>
-          <View
-            style={[
-              { opacity: devVisible ? 1 : 0 },
-              StyleSheet.absoluteFill]}
-            pointerEvents={devVisible ? 'auto' : 'none'}
-          >
-            <Demo />
-          </View>
-        </View>
-      );
-    //   if (proVisible) {
-    //     return <Nav />;
-    //   } if (devVisible) {
-    //     return <Demo />;
-    //   }
-    //   return <View style={style.container} />;
-    }
+            <Text>{button.title}</Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+    </View>
+  )
 
-    renderControlPanel = () => (
-      <ControlPanel />
-    )
+  renderControlPanel = () => (
+    <ControlPanel />
+  )
 
-    render() {
-      return (
-        <View style={style.container}>
-          {this.renderDevPro()}
-          {this.renderButtons()}
-          {this.renderControlPanel()}
-        </View>
-      );
-    }
+  render() {
+    return (
+      <View style={style.container}>
+        {this.renderScreens()}
+        {this.renderButtons()}
+        {this.renderControlPanel()}
+      </View>
+    );
+  }
 }
 
 export default SwitchDevPro;
