@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import {
-  View, Text, StyleSheet, ViewPropTypes,
+  View, StyleSheet,
 } from 'react-native';
 import PropTypes from 'prop-types';
+
+import Item from './Item';
 import Icon from '../Icon';
 
 const style = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
 });
 
 /**
@@ -17,7 +16,7 @@ const style = StyleSheet.create({
  * Usage :
  * ```js
  * <ItemWithIcon
- *  message="Hi, use me in this way" />
+ *  icon={{name: 'md-setting', collection; 'Ionicons'}} />
  * ```
  */
 class ItemWithIcon extends Component {
@@ -30,6 +29,9 @@ class ItemWithIcon extends Component {
     const { icon, iconStyle, iconContainerStyle } = this.props;
     const { collection, name } = icon;
     const IconProps = Icon[collection]; // Iconはファイル名。ここでは特にそのファイルを使ってるのではなくIconを使う時に必要だから
+    if (collection === '' || name === '') {
+      return null;
+    }
     return (
       <View style={[style.leftElement, iconContainerStyle]}>
         <IconProps name={name} style={[style.icon, iconStyle]} />
@@ -38,25 +40,58 @@ class ItemWithIcon extends Component {
   };
 
   render() {
-    const { message } = this.props;
+    const {
+      title,
+      onPress,
+      titleStyle,
+      lineStyle,
+      containerStyle,
+      renderBelow,
+      renderAbove,
+      renderRight,
+    } = this.props;
     return (
-      <View style={style.container}>
-        <Text>{message}</Text>
-      </View>
+      <Item
+        renderLeft={this.renderIcon}
+        title={title}
+        onPress={onPress}
+        titleStyle={titleStyle}
+        lineStyle={lineStyle}
+        containerStyle={containerStyle}
+        renderBelow={renderBelow}
+        renderAbove={renderAbove}
+        renderRight={renderRight}
+      />
     );
   }
 }
 
 ItemWithIcon.propTypes = {
-  message: PropTypes.string,
-  iconStyle: ViewPropTypes.style,
-  iconContainerStyle: ViewPropTypes.style,
+  icon: PropTypes.shape({ collection: PropTypes.string, name: PropTypes.string }),
+  iconStyle: PropTypes.object,
+  iconContainerStyle: PropTypes.object,
+  title: PropTypes.string,
+  onPress: PropTypes.func,
+  titleStyle: PropTypes.object,
+  lineStyle: PropTypes.object,
+  containerStyle: PropTypes.object,
+  renderBelow: PropTypes.node,
+  renderAbove: PropTypes.node,
+  renderRight: PropTypes.node,
 };
 
 ItemWithIcon.defaultProps = {
-  message: 'This is Template Component',
+  icon: { collection: '', name: '' },
   iconStyle: {},
   iconContainerStyle: {},
+  title: '',
+  onPress: () => {},
+  titleStyle: {},
+  lineStyle: {},
+  containerStyle: {},
+  renderBelow: () => { throw new Error('the function is null'); },
+  renderAbove: () => { throw new Error('the function is null'); },
+  renderRight: () => null,
 };
 
 export default ItemWithIcon;

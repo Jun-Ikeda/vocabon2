@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  View, Text, TouchableOpacity, StyleSheet, ViewPropTypes,
+  View, Text, TouchableOpacity, StyleSheet,
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -97,9 +97,9 @@ class Item extends Component {
 Item.propTypes = {
   title: PropTypes.string,
   onPress: PropTypes.func,
-  titleStyle: ViewPropTypes.style,
-  lineStyle: ViewPropTypes.style,
-  containerStyle: ViewPropTypes.style,
+  titleStyle: /* ViewPropTypes.style */PropTypes.object,
+  lineStyle: /* ViewPropTypes.style */PropTypes.object,
+  containerStyle: /* ViewPropTypes.style */PropTypes.object,
   renderBelow: PropTypes.node,
   renderAbove: PropTypes.node,
   renderRight: PropTypes.node,

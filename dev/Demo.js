@@ -6,19 +6,11 @@ import Header from '../src/components/header/Header';
 
 import Icon from '../src/components/Icon';
 import TempComponent from '../src/components/TempComponent';
-// import Background from '../src/components/Background';
-// import PracticeNavigator from './Practice/PracticeNavigator';
-// import Play from './temp/Play';
-// import Header from '../src/components/header/Header';
-// import HeaderWithBack from '../src/components/header/HeaderWithBack';
-
-/* import Item from '../src/components/item/Item';
+import Item from '../src/components/item/Item';
 import ItemWithIcon from '../src/components/item/ItemWithIcon';
-import ItemWithDescriptionRight from '../src/components/item/ItemWithDescriptionRight';
-// import SettingItem from '../src/components/item/material/SettingItem';
-import PopUpMenu from '../src/components/menu/PopUpMenu';
-import Color from '../src/config/Color';
-import PopUpMenuWithItems from '../src/components/menu/PopUpMenuWithItems'; */
+import ItemWithDescription from '../src/components/item/ItemWithDescription';
+import Background from '../src/components/Background';
+import TextAdjust from '../src/components/TextAdjust';
 
 const style = StyleSheet.create({
   container: {
@@ -27,27 +19,32 @@ const style = StyleSheet.create({
   header: {
     backgroundColor: 'blue',
   },
-  // item: {
-  //   borderWidth: 1,
-  //   borderColor: 'white',
-  // },
-  // itemwithicon: {
-  //   borderWidth: 1,
-  //   borderColor: 'white',
-  // },
-  // itemdescription: {
-  //   borderWidth: 1,
-  //   borderColor: 'white',
-  // },
 });
 
 class Demo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // menuVisible: false,
     };
   }
+
+  renderBackground = () => (
+    <Background
+      imageStyle={{ resizeMoede: 'cover', width: 'auto', flex: 1 }}
+      imageSource={{ uri: 'https://images.unsplash.com/photo-1605491654512-cab6c6f016bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' }}
+      blurRadius={0}
+      overlayColor="#ffffff"
+      overlayOpacity={0.6}
+    />
+  )
+
+  renderItems= () => (
+    <View>
+      <Item title="Item" />
+      <ItemWithIcon title="Item With Icon" icon={{ name: 'md-settings', collection: 'Ionicons' }} />
+      <ItemWithDescription title="Item With Description" description="a" />
+    </View>
+  )
 
   // renderPracticeNavigator = () => (
   //   <PracticeNavigator />
@@ -87,15 +84,22 @@ class Demo extends Component {
     // <HeaderWithBack style={style.header} large={false} />
   )
 
+  renderTextAdjust = () => (
+    <TextAdjust message="aaaaa" />
+  )
+
   render() {
     return (
       <View style={style.container}>
+        {this.renderBackground()}
         {/* {this.renderPracticeNavigator()} */}
         {/* {this.renderIcons()} */}
         {/* {this.renderBackground()} */}
-        {/* {this.renderHeader()} */}
+        {this.renderHeader()}
+        {this.renderTextAdjust()}
         {/* <Text>Gaku Nagata</Text> */}
         {/* <Play /> */}
+        {this.renderItems()}
         {this.renderTempComponent()}
       </View>
     );

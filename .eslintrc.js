@@ -33,7 +33,7 @@ module.exports = {
     // 'react-native/no-inline-styles': 2,
     // 'react-native/no-color-literals': 2,
     'react-native/no-raw-text': 2,
-    'react/forbid-prop-types': ['warn'],
+    'react/forbid-prop-types': ['off'],
     'react/jsx-props-no-spreading': ['off'],
   },
 };

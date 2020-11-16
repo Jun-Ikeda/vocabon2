@@ -35,12 +35,9 @@ class HeaderWithBack extends Component {
 
   onPressLeft = () => {
     const { navigation, onPressLeft } = this.props;
-    console.log('onPressLeft');
     try {
-      console.log('been called try');
       onPressLeft();
     } catch (error) {
-      console.log('been called catch');
       navigation.goBack();
     }
   };
@@ -61,7 +58,6 @@ class HeaderWithBack extends Component {
       renderRight,
       renderAll,
       large,
-      // onPressLeft,
       onLongPressLeft,
       onPressTitle,
       onLongPressTitle,
@@ -98,8 +94,6 @@ class HeaderWithBack extends Component {
 
 HeaderWithBack.propTypes = {
   style: ViewPropTypes.style,
-  // renderLeft: PropTypes.node,
-  // renderTitle: PropTypes.node,
   renderRight: PropTypes.node,
   renderAll: PropTypes.node,
   large: PropTypes.bool,
@@ -118,8 +112,6 @@ HeaderWithBack.propTypes = {
 
 HeaderWithBack.defaultProps = {
   style: {},
-  // renderLeft: () => null,
-  // renderTitle: () => null,
   renderRight: () => null,
   renderAll: () => { throw new Error('the function is null'); },
   large: false,
