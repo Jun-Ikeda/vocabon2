@@ -4,9 +4,10 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 import Icon from 'react-native-vector-icons/Ionicons';
 import PropTypes from 'prop-types';
 
-import Template from '../../../dev/Template';
+// import Template from '../../../dev/Template';
 
 import HomeNav from './home/HomeNav';
+import SearchNav from './search/SearchNav';
 import SettingNav from './setting/SettingNav';
 
 const renderIcon = ({ ios: { active, inactive }, android }) => {
@@ -33,7 +34,7 @@ export default createMaterialBottomTabNavigator(
       },
     },
     Profile: {
-      screen: Template,
+      screen: SearchNav,
       navigationOptions: {
         tabBarLabel: 'Profile',
         tabBarColor: '#1e1e1d',

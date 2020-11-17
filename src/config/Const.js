@@ -1,4 +1,7 @@
-import { Platform } from 'react-native';
+import React from 'react';
+import {
+  View, Text, Platform, StyleSheet,
+} from 'react-native';
 
 export const header = {
   paddingTopByOS: () => {
@@ -13,6 +16,25 @@ export const header = {
   },
   heightMax: 96,
   heightMin: 48,
+  mainHeader: {
+    renderAll: (title) => {
+      const style = StyleSheet.create({
+        headerContainer: {
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+        headerTitle: {
+          fontSize: 20,
+        },
+      });
+      return (
+        <View style={style.headerContainer}>
+          <Text style={style.headerTitle}>{title}</Text>
+        </View>
+      );
+    },
+  },
 };
 
 export const func = {

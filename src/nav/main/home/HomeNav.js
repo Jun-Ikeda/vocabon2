@@ -1,10 +1,11 @@
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Template from '../../../../dev/Template';
+import Home from './screens/Home';
+// import Template from '../../../../dev/Template';
 
 const StackNavigator = createStackNavigator(
   {
-    setting: Template,
+    setting: Home,
   },
   {
     headerMode: 'none',

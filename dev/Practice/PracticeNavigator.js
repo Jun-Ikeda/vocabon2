@@ -11,12 +11,12 @@ import PracticeMrGenius from './PracticeMrGenius';
 import PracticeIW from './PracticeIW';
 
 const PracticeNavigator = createSwitchNavigator({
+  ichikawa: PracticeMrGenius,
   iwasaki: PracticeIW,
   ikeda: PracticeI,
   kochiya: PracticeK,
   suzuki: PracticeS,
   okuda: PracticeO,
-  ichikawa: PracticeMrGenius,
 });
 
 const appContainer = createAppContainer(PracticeNavigator);

@@ -96,11 +96,11 @@ class Demo extends Component {
         {/* {this.renderIcons()} */}
         {/* {this.renderBackground()} */}
         {this.renderHeader()}
-        {this.renderTextAdjust()}
         {/* <Text>Gaku Nagata</Text> */}
         {/* <Play /> */}
         {this.renderItems()}
         {this.renderTempComponent()}
+        {this.renderTextAdjust()}
       </View>
     );
 

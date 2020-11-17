@@ -1,11 +1,11 @@
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Setting from './screens/Setting';
+import Search from './screens/Search';
 // import Template from '../../../../dev/Template';
 
 const StackNavigator = createStackNavigator(
   {
-    setting: Setting,
+    setting: Search,
   },
   {
     headerMode: 'none',
