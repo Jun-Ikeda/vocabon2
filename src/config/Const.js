@@ -15,4 +15,14 @@ export const header = {
   heightMin: 48,
 };
 
-export default { header };
+export const func = {
+  isColor: (strColor) => {
+    try {
+      return strColor.indexOf('/') === -1;
+    } catch (error) {
+      return null;
+    }
+  },
+};
+
+export default { header, func };
