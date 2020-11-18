@@ -8,6 +8,12 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
   },
+  button: {
+    flex: 1,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 class Signup extends Component {
@@ -20,7 +26,7 @@ class Signup extends Component {
       return (
         <View style={style.container}>
           <Text>This is Signup screen!</Text>
-          <TouchableOpacity onPress={this.goToMain}>
+          <TouchableOpacity onPress={this.goToMain} style={style.button}>
             <Text>Go To Main</Text>
           </TouchableOpacity>
         </View>

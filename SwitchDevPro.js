@@ -29,10 +29,10 @@ const style = StyleSheet.create({
 const buttons = [
   { title: 'Production', element: <Nav /> },
   { title: 'Develop', element: <Demo /> },
-  { title: 'Practice', element: <PracticeNavigator /> },
-  { title: 'Template', element: <Template /> },
   { title: 'Okuda', element: <Setting /> },
-  { title: 'Ikeda Senyo Screen', element: <Template /> },
+  { title: 'Ikeda', element: <Template /> },
+  { title: 'Suzuki', element: <Template /> },
+  { title: 'Practice', element: <PracticeNavigator /> },
 ];
 
 class SwitchDevPro extends Component {

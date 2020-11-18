@@ -27,16 +27,18 @@ class TextAdjust extends Component {
   }
 
   render() {
-    const { message, lines, height } = this.props;
+    const {
+      message, lines, height, width,
+    } = this.props;
     return (
-      <View>
+      <View style={{ width }}>
         <Text
           style={{ color: 'black' }}
           onTextLayout={(e) => {
             const currentLine = e.nativeEvent.lines.length;
-            const currentHeight = e.nativeEvent.lines.forEach(line => )
+            const currentHeight = e.nativeEvent.lines.reduce((sum, line) => sum + line.height);
             this.setState({ currentLine, currentHeight });
-            console.log({ line: e.nativeEvent.lines });
+            console.log({ currentLine, currentHeight });
           }}
         >
           {message}
@@ -51,12 +53,14 @@ TextAdjust.propTypes = {
   message: PropTypes.string,
   lines: PropTypes.number,
   height: PropTypes.number,
+  width: PropTypes.number,
 };
 
 TextAdjust.defaultProps = {
   message: 'This is TextAdjust Component',
   lines: 0,
   height: 20,
+  width: 'auto',
 };
 
 export default TextAdjust;
