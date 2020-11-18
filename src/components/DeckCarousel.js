@@ -29,14 +29,20 @@ class DeckCarousel extends Component {
     this.carouselRef = {};
   }
 
+  renderItem = ({ item }) => (
+    <View style={{ backgroundColor: 'purple' }}>
+      <Text>{item.title}</Text>
+    </View>
+  );
+
   render() {
     const { active } = this.state;
     const { data, width, containerStyle } = this.props;
     return (
-      <View 
+      <View
         style={[style.container, containerStyle]}
         onLayout={() => {}}
-        >
+      >
         <Carousel
           data={data}
           renderItem={this.renderItem}

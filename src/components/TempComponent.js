@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const style = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
   },
 });
 

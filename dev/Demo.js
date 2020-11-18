@@ -12,6 +12,8 @@ import ItemWithDescription from '../src/components/item/ItemWithDescription';
 import Background from '../src/components/Background';
 import TextAdjust from '../src/components/TextAdjust';
 import PopUpMenu from '../src/components/menu/PopUpMenu';
+import UserIcon from '../src/components/UserIcon';
+import DeckCarousel from '../src/components/DeckCarousel';
 
 const style = StyleSheet.create({
   container: {
@@ -29,6 +31,15 @@ class Demo extends Component {
       menuVisible: false,
     };
   }
+
+  renderHeader = () => (
+    <Header
+      style={style.header}
+      large
+      renderAll={() => <View style={{ flex: 1, backgroundColor: 'red' }} />}
+      renderLeft={this.renderIcons}
+    />
+  )
 
   renderBackground = () => (
     <Background
@@ -66,13 +77,15 @@ class Demo extends Component {
     );
   }
 
-  renderHeader = () => (
-    <Header
-      style={style.header}
-      large
-      renderAll={() => <View style={{ flex: 1, backgroundColor: 'red' }} />}
-      renderLeft={this.renderIcons}
+  renderUserIcon = () => (
+    <UserIcon
+      user={{ name: 'Vocabon', background: '#53A1B3' }}
+      size={52}
     />
+  )
+
+  renderCarousel = () => (
+    <DeckCarousel data={[{ title: 'this' }, { title: 'is' }, { title: 'test' }]} />
   )
 
   renderTextAdjust = () => (
@@ -83,16 +96,13 @@ class Demo extends Component {
     return (
       <View style={style.container}>
         {this.renderBackground()}
-        {/* {this.renderPracticeNavigator()} */}
-        {/* {this.renderIcons()} */}
-        {/* {this.renderBackground()} */}
         {this.renderHeader()}
-        {/* <Text>Gaku Nagata</Text> */}
-        {/* <Play /> */}
         {this.renderItems()}
         {this.renderTempComponent()}
         {this.renderTextAdjust()}
+        {this.renderUserIcon()}
         {this.renderMenu()}
+        {this.renderCarousel()}
       </View>
     );
   }

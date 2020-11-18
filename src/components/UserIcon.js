@@ -9,7 +9,7 @@ import Color from '../config/Color';
 
 const style = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
   },
 });
 
