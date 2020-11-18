@@ -45,6 +45,11 @@ export const func = {
       return null;
     }
   },
+  onLayoutContainer: (e) => {
+    const { layout } = e.nativeEvent;
+    const { height, width } = layout;
+    return { height, width };
+  },
 };
 
 export default { header, func };

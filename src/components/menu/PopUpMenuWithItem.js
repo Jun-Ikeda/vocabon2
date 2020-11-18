@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 import PopUpMenu from './PopUpMenu';
 
 const style = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+//   container: {
+//     flex: 1,
+//   },
 });
 
 /**
@@ -52,7 +52,6 @@ PopUpMenuWithItem.propTypes = {
   overlayStyle: PropTypes.object,
   setVisible: PropTypes.func,
   onLayout: PropTypes.func,
-
 };
 
 PopUpMenuWithItem.defaultProps = {

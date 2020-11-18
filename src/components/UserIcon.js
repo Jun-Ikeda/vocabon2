@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import {
+  View, StyleSheet, Text, Image,
+} from 'react-native';
 import PropTypes from 'prop-types';
 
 import { func } from '../config/Const';
+import Color from '../config/Color';
 
 const style = StyleSheet.create({
   container: {
@@ -23,38 +26,89 @@ const style = StyleSheet.create({
  * ```
  */
 class UserIcon extends Component {
-    renderContent = () => {
-      const { user: { background } } = this.props;
-      if (func.isColor(background)) {
-        return this.renderColorBackground();
-      }
-      return this.renderImageBackground();
-    }
-
-    render() {
-      const { size, containerStyle } = this.props;
+  renderColorBackground = () => {
+    try {
+      const {
+        user: { name, background },
+        size,
+      } = this.props;
+      const Uppercase = name.charAt(0).toUpperCase();
       return (
-        <View style={[
-          style.container,
-          containerStyle,
-          { height: size, width: size, borderRadius: size / 2 }]}
+        <View
+          style={{
+            height: size,
+            width: size,
+            borderRadius: size / 2,
+            backgroundColor: background,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
         >
-          {this.renderContent()}
+          <Text style={{ color: Color.font1, fontSize: size * 0.5 }}>
+            {Uppercase}
+          </Text>
         </View>
       );
+    } catch (error) {
+      return null;
     }
+  }
+
+  renderImageBackground =() => {
+    const {
+      size, user: { background },
+    } = this.props;
+    return (
+      <View>
+        <Image
+          source={{
+            uri: background,
+          }}
+          style={{
+            height: size,
+            width: size,
+            borderRadius: size / 2,
+            backgroundColor: background,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        />
+      </View>
+    );
+  }
+
+  renderContent = () => {
+    const { user: { background } } = this.props;
+    if (func.isColor(background)) {
+      return this.renderColorBackground();
+    }
+    return this.renderImageBackground();
+  }
+
+  render() {
+    const { size, containerStyle } = this.props;
+    return (
+      <View style={[
+        style.container,
+        containerStyle,
+        { height: size, width: size, borderRadius: size / 2 }]}
+      >
+        {this.renderContent()}
+      </View>
+    );
+  }
 }
 
 UserIcon.propTypes = {
-  size: PropTypes.number,
   containerStyle: PropTypes.object,
-  user: PropTypes.shape({ background: PropTypes.string }),
+  size: PropTypes.number,
+  user: PropTypes.shape({ name: PropTypes.string, background: PropTypes.string }),
 };
 
 UserIcon.defaultProps = {
-  size: 28,
   containerStyle: {},
-  user: { background: '#ffffff' },
+  size: 28,
+  user: { name: '', background: '#ffffff' },
 };
 
 export default UserIcon;
