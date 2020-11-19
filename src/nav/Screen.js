@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { func } from '../config/Const';
 
 import Nav from './Nav';
 
 const style = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   tabularasa: {
     flex: 1,
   },
 });
 
-export default class Screen extends Component {
+class Screen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,24 +22,36 @@ export default class Screen extends Component {
     };
   }
 
+  onLayout = (e) => {
+    const { height, width } = func.onLayoutContainer(e);
+    this.setState({ isPortrait: height > width, isExamined: true });
+  }
+
   renderScreen = () => {
-    const { isPortrait } = this.state;
-    if (isPortrait) {
-      return <Nav />;
-    }
-    return <View style={style.tabularasa} />
-  }
-
-  componentDidMount() {
-    const isPortrait = func.isPortrait();
-    this.setState({ isPortrait, isExamined: true });
-  }
-
-  render() {
-    const { isExamined } = this.state;
+    const { isPortrait, isExamined } = this.state;
     if (isExamined) {
-      this.renderScreen();
+      if (isPortrait) {
+        return <Nav />;
+      }
+      return (
+        <View style={style.tabularasa}>
+          <Text>Landscape mode is not supported yet</Text>
+        </View>
+      );
     }
     return <View style={style.tabularasa} />;
   }
+
+  render() {
+    return (
+      <View
+        style={style.container}
+        onLayout={this.onLayout}
+      >
+        {this.renderScreen()}
+      </View>
+    );
+  }
 }
+
+export default Screen;

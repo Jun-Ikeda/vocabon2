@@ -3,7 +3,8 @@ import {
   View, Text, StyleSheet, TouchableOpacity, ScrollView,
 } from 'react-native';
 
-import Nav from './src/nav/Nav';
+// import Nav from './src/nav/Nav';
+import Screen from './src/nav/Screen';
 import Demo from './dev/Demo';
 import ControlPanel from './dev/ControlPanel';
 import Template from './dev/Template';
@@ -26,7 +27,7 @@ const style = StyleSheet.create({
 });
 
 const buttons = [
-  { title: 'Production', element: <Nav /> },
+  { title: 'Production', element: <Screen /> },
   { title: 'Develop', element: <Demo /> },
   { title: 'Okuda', element: <Setting /> },
   { title: 'Ikeda', element: <Template /> },
