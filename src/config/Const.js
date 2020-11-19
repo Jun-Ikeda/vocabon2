@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, Text, Platform, StyleSheet,
+  View, Text, Platform, StyleSheet, Dimensions,
 } from 'react-native';
 
 export const header = {
@@ -37,6 +37,10 @@ export const header = {
   },
 };
 
+const carousel = {
+
+};
+
 export const func = {
   isColor: (strColor) => {
     try {
@@ -44,6 +48,10 @@ export const func = {
     } catch (error) {
       return null;
     }
+  },
+  isPortrait: () => {
+    const { height, width } = Dimensions.get('window');
+    return height > width;
   },
   onLayoutContainer: (e) => {
     const { layout } = e.nativeEvent;

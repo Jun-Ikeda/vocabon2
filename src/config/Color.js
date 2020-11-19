@@ -28,7 +28,7 @@ const Color = {
     pSky: 'rgb(191,228,255)',
     pBrown: 'rgb(255,202,128)',
     pPurple: 'rgb(201,172,230)',
-  }
+  },
 };
 
 export const PastelColors = [

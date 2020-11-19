@@ -52,7 +52,7 @@ class Demo extends Component {
   )
 
   renderItems= () => (
-    <View>
+    <View style={{ flex: 1 }}>
       <Item title="Item" onPress={() => this.setState({ menuVisible: true })} />
       <ItemWithIcon title="Item With Icon" icon={{ name: 'md-settings', collection: 'Ionicons' }} />
       <ItemWithDescription title="Item With Description" description="a" />
