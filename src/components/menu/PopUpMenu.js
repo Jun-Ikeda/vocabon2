@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  View, StyleSheet, TouchableOpacity, Text, TouchableHighlight,
+  View, StyleSheet, TouchableOpacity, Text,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Color from '../../config/Color';
@@ -79,9 +79,9 @@ PopUpMenu.propTypes = {
 PopUpMenu.defaultProps = {
   isVisible: false,
   renderMenu: () => (
-    <TouchableHighlight style={style.defaultMenu} onPress={() => console.log('Menu is clicked')}>
+    <TouchableOpacity style={style.defaultMenu} onPress={() => console.log('Menu is clicked')}>
       <Text style={style.defaultMenuText}>Pop Up Menu</Text>
-    </TouchableHighlight>
+    </TouchableOpacity>
   ),
   overlayStyle: {},
   setVisible: () => {},

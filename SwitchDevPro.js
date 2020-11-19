@@ -7,7 +7,6 @@ import Nav from './src/nav/Nav';
 import Demo from './dev/Demo';
 import ControlPanel from './dev/ControlPanel';
 import Template from './dev/Template';
-import PracticeNavigator from './dev/Practice/PracticeNavigator';
 import Setting from './src/nav/main/setting/screens/Setting';
 
 const style = StyleSheet.create({
@@ -32,7 +31,8 @@ const buttons = [
   { title: 'Okuda', element: <Setting /> },
   { title: 'Ikeda', element: <Template /> },
   { title: 'Suzuki', element: <Template /> },
-  { title: 'Practice', element: <PracticeNavigator /> },
+  { title: 'Kochiya', element: <Template /> },
+  { title: 'Iwasaki', element: <Template /> },
 ];
 
 class SwitchDevPro extends Component {

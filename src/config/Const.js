@@ -52,4 +52,4 @@ export const func = {
   },
 };
 
-export default { header, func };
+export default { header, carousel, func };

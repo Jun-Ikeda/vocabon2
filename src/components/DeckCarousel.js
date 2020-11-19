@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {
+  View, Text, StyleSheet, TouchableOpacity,
+} from 'react-native';
 import PropTypes from 'prop-types';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import Color from '../config/Color';
+import { func } from '../config/Const';
 
 const style = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  carouselContainer: {
+    backgroundColor: Color.white1,
   },
 });
 
@@ -25,23 +31,66 @@ class DeckCarousel extends Component {
     super(props);
     this.state = {
       active: 0,
+      layout: { height: 300, width: 400 },
     };
     this.carouselRef = {};
   }
 
-  renderItem = ({ item }) => (
-    <View style={{ backgroundColor: 'purple' }}>
-      <Text>{item.title}</Text>
-    </View>
-  );
+  renderItem = ({ item }) => {
+    const { layout: { width } } = this.state;
+    return (
+      <TouchableOpacity
+        style={[
+          style.carouselContainer,
+          {
+            width: width * 0.6,
+            height: width * 0.5,
+            borderRadius: width * 0.05,
+          },
+        ]}
+        onPress={() => {
+          console.log('aaa');
+        }}
+      >
+        <Text>{item.title}</Text>
+        {/* <Image
+          source={{ uri: `https://images.unsplash.com/${deckinfo.th.uri}` }}
+          style={[
+            style.thumbnail,
+            {
+              borderTopLeftRadius: width * 0.05,
+              borderTopRightRadius: width * 0.05,
+            },
+          ]}
+        /> */}
+        {/* <View style={{ padding: width * 0.03 }}>
+          <Text style={{ fontSize: 18 }}>{deckinfo.ti}</Text>
+          <View style={{ padding: 5, flexDirection: 'row' }}>
+            <View>
+              <Text style={{ fontSize: 12, color: Color.font5 }}>
+                {`${deckinfo.num} words ${v[id]} views`}
+              </Text>
+              <Text style={{ fontSize: 12, color: Color.font5 }}>
+                {`Learn ${deckinfo.lang1} In ${deckinfo.lang2}`}
+              </Text>
+            </View>
+            <UserIcon user={user[id]} size={32} />
+          </View>
+        </View> */}
+      </TouchableOpacity>
+
+    );
+  };
 
   render() {
-    const { active } = this.state;
-    const { data, width, containerStyle } = this.props;
+    const { active, layout: { height, width } } = this.state;
+    const { data, containerStyle } = this.props;
     return (
       <View
         style={[style.container, containerStyle]}
-        onLayout={() => {}}
+        onLayout={(e) => {
+          this.setState({ layout: func.onLayoutContainer(e) });
+        }}
       >
         <Carousel
           data={data}

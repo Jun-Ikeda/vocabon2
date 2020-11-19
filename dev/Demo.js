@@ -101,8 +101,8 @@ class Demo extends Component {
         {this.renderTempComponent()}
         {this.renderTextAdjust()}
         {this.renderUserIcon()}
-        {this.renderMenu()}
         {this.renderCarousel()}
+        {this.renderMenu()}
       </View>
     );
   }
