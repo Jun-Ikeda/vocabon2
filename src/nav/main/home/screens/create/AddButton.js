@@ -29,8 +29,7 @@ const style = StyleSheet.create({
  * @augments {Component<Props, State>}
  * Usage :
  * ```js
- * <AddButton
- *  message="Hi, use me in this way" />
+ * <AddButton />
  * ```
  */
 class AddButton extends Component {

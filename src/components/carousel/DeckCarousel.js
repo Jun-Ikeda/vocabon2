@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import {
-  View, Text, StyleSheet, TouchableOpacity,
+  View, StyleSheet,
 } from 'react-native';
 import PropTypes from 'prop-types';
-
 import Carousel, { Pagination } from 'react-native-snap-carousel';
+
 import Color from '../../config/Color';
 import { func } from '../../config/Const';
+
+import DeckCard from './DeckCard';
 
 const style = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  carouselContainer: {
-    backgroundColor: Color.white1,
   },
 });
 
@@ -40,23 +39,16 @@ class DeckCarousel extends Component {
   renderItem = ({ item }) => {
     const { layout: { width } } = this.state;
     return (
-      <TouchableOpacity
-        style={[
-          style.carouselContainer,
-          {
-            width: width * 0.6,
-            height: width * 0.5,
-            borderRadius: width * 0.05,
-          },
-        ]}
-        onPress={() => {
-          console.log('you pressed the deck card!');
+      <DeckCard
+        item={item}
+        cardStyle={{
+          width: width * 0.6,
+          height: width * 0.45,
+          borderRadius: width * 0.05,
         }}
-      >
-        <Text>{item.title}</Text>
-      </TouchableOpacity>
+      />
     );
-  };
+  }
 
   render() {
     const { active, layout: { height, width } } = this.state;
@@ -91,13 +83,11 @@ class DeckCarousel extends Component {
 
 DeckCarousel.propTypes = {
   data: PropTypes.array,
-  width: PropTypes.number,
   containerStyle: PropTypes.object,
 };
 
 DeckCarousel.defaultProps = {
   data: [],
-  width: 360,
   containerStyle: {},
 };
 
