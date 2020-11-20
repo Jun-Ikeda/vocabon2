@@ -11,6 +11,11 @@ const style = StyleSheet.create({
   tabularasa: {
     flex: 1,
   },
+  landscapeContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 class Screen extends Component {
@@ -34,7 +39,7 @@ class Screen extends Component {
         return <Nav />;
       }
       return (
-        <View style={style.tabularasa}>
+        <View style={style.landscapeContainer}>
           <Text>Landscape mode is not supported yet</Text>
         </View>
       );

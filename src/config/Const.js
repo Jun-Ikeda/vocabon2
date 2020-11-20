@@ -1,6 +1,6 @@
-import React from 'react';
+// import React from 'react';
 import {
-  View, Text, Platform, StyleSheet, Dimensions,
+  Platform, Dimensions,
 } from 'react-native';
 
 export const header = {
@@ -15,26 +15,8 @@ export const header = {
     }
   },
   heightMax: 96,
+  heightMid: 72,
   heightMin: 48,
-  mainHeader: {
-    renderAll: (title) => {
-      const style = StyleSheet.create({
-        headerContainer: {
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-        },
-        headerTitle: {
-          fontSize: 20,
-        },
-      });
-      return (
-        <View style={style.headerContainer}>
-          <Text style={style.headerTitle}>{title}</Text>
-        </View>
-      );
-    },
-  },
 };
 
 const carousel = {

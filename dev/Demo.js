@@ -13,7 +13,7 @@ import Background from '../src/components/Background';
 import TextAdjust from '../src/components/TextAdjust';
 import PopUpMenu from '../src/components/menu/PopUpMenu';
 import UserIcon from '../src/components/UserIcon';
-import DeckCarousel from '../src/components/DeckCarousel';
+import DeckCarousel from '../src/components/carousel/DeckCarousel';
 
 const style = StyleSheet.create({
   container: {

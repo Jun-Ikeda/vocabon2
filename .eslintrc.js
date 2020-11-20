@@ -35,5 +35,6 @@ module.exports = {
     'react-native/no-raw-text': 2,
     'react/forbid-prop-types': ['off'],
     'react/jsx-props-no-spreading': ['off'],
+    'no-nested-ternary': ['off'],
   },
 };

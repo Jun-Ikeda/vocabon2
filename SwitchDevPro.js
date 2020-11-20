@@ -28,7 +28,8 @@ const style = StyleSheet.create({
 
 const buttons = [
   { title: 'Production', element: <Screen /> },
-  { title: 'Develop', element: <Demo /> },
+  { title: 'Demo', element: <Demo /> },
+  { title: 'Ichikawa', element: <Template /> },
   { title: 'Okuda', element: <Setting /> },
   { title: 'Ikeda', element: <Template /> },
   { title: 'Suzuki', element: <Template /> },

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {
   View, Text, StyleSheet, /* TouchableOpacity, */
 } from 'react-native';
-import Header from '../../../../components/header/Header';
-import { header } from '../../../../config/Const';
+
+import HeaderInMain from '../../../../components/header/HeaderInMain';
 
 const style = StyleSheet.create({
   container: {
@@ -22,7 +22,7 @@ class Search extends Component {
     // const {} = this.state;
     return (
       <View style={style.container}>
-        <Header large renderAll={() => header.mainHeader.renderAll('Search')} />
+        <HeaderInMain title="Search" />
         <Text>This is Search screen!</Text>
       </View>
     );

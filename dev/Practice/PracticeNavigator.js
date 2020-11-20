@@ -10,7 +10,7 @@ import PracticeO from './PracticeO';
 import PracticeMrGenius from './PracticeMrGenius';
 import PracticeIW from './PracticeIW';
 
-const PracticeNavigator = createSwitchNavigator({
+const Navigator = createSwitchNavigator({
   ichikawa: PracticeMrGenius,
   iwasaki: PracticeIW,
   ikeda: PracticeI,
@@ -19,6 +19,6 @@ const PracticeNavigator = createSwitchNavigator({
   okuda: PracticeO,
 });
 
-const appContainer = createAppContainer(PracticeNavigator);
+const appContainer = createAppContainer(Navigator);
 
 export default appContainer;

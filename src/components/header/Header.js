@@ -50,6 +50,7 @@ class Header extends Component {
   renderContent = () => {
     const {
       large,
+      medium,
       onPressLeft,
       onPressTitle,
       onPressRight,
@@ -61,7 +62,7 @@ class Header extends Component {
       renderRight,
     } = this.props;
     const width = {
-      width: large ? header.heightMax : header.heightMin,
+      width: large ? header.heightMax : (medium ? header.heightMid : header.heightMin),
     };
     const parts = [
       {
@@ -98,9 +99,11 @@ class Header extends Component {
   };
 
   renderAll = () => {
-    const { style: propsStyle, renderAll, large } = this.props;
+    const {
+      style: propsStyle, renderAll, large, medium,
+    } = this.props;
     const height = {
-      height: large ? header.heightMax : header.heightMin,
+      height: large ? header.heightMax : (medium ? header.heightMid : header.heightMin),
     };
     try {
       return (
@@ -135,6 +138,7 @@ Header.propTypes = {
   renderRight: PropTypes.node,
   renderAll: PropTypes.node,
   large: PropTypes.bool,
+  medium: PropTypes.bool,
   onPressLeft: PropTypes.func,
   onLongPressLeft: PropTypes.func,
   onPressTitle: PropTypes.func,
@@ -150,6 +154,7 @@ Header.defaultProps = {
   renderRight: () => null,
   renderAll: () => { throw new Error('the function is null'); },
   large: false,
+  medium: false,
   onPressLeft: () => {},
   onLongPressLeft: () => {},
   onPressTitle: () => {},

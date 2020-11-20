@@ -5,8 +5,8 @@ import {
 import PropTypes from 'prop-types';
 
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-import Color from '../config/Color';
-import { func } from '../config/Const';
+import Color from '../../config/Color';
+import { func } from '../../config/Const';
 
 const style = StyleSheet.create({
   container: {
@@ -50,36 +50,11 @@ class DeckCarousel extends Component {
           },
         ]}
         onPress={() => {
-          console.log('aaa');
+          console.log('you pressed the deck card!');
         }}
       >
         <Text>{item.title}</Text>
-        {/* <Image
-          source={{ uri: `https://images.unsplash.com/${deckinfo.th.uri}` }}
-          style={[
-            style.thumbnail,
-            {
-              borderTopLeftRadius: width * 0.05,
-              borderTopRightRadius: width * 0.05,
-            },
-          ]}
-        /> */}
-        {/* <View style={{ padding: width * 0.03 }}>
-          <Text style={{ fontSize: 18 }}>{deckinfo.ti}</Text>
-          <View style={{ padding: 5, flexDirection: 'row' }}>
-            <View>
-              <Text style={{ fontSize: 12, color: Color.font5 }}>
-                {`${deckinfo.num} words ${v[id]} views`}
-              </Text>
-              <Text style={{ fontSize: 12, color: Color.font5 }}>
-                {`Learn ${deckinfo.lang1} In ${deckinfo.lang2}`}
-              </Text>
-            </View>
-            <UserIcon user={user[id]} size={32} />
-          </View>
-        </View> */}
       </TouchableOpacity>
-
     );
   };
 
