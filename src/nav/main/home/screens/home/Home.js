@@ -5,9 +5,9 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import HeaderInMain from '../../../../components/header/HeaderInMain';
-import DeckCarousel from '../../../../components/carousel/DeckCarousel';
-import AddButton from './create/AddButton';
+import HeaderInMain from '../../../../../components/header/HeaderInMain';
+import DeckCarousel from '../../../../../components/carousel/DeckCarousel';
+import AddButton from './AddButton';
 
 const style = StyleSheet.create({
   container: {

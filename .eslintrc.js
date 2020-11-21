@@ -36,5 +36,7 @@ module.exports = {
     'react/forbid-prop-types': ['off'],
     'react/jsx-props-no-spreading': ['off'],
     'no-nested-ternary': ['off'],
+    'no-empty-pattern': ['warn'],
+    'arrow-body-style': ['warn']
   },
 };

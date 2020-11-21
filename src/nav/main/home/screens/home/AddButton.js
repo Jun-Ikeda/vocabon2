@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {
-  View, Text, StyleSheet, TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 
 import Icon from '../../../../../components/Icon';
 import Color from '../../../../../config/Color';

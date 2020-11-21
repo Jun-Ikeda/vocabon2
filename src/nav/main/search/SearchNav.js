@@ -5,7 +5,8 @@ import Search from './screens/Search';
 
 const StackNavigator = createStackNavigator(
   {
-    setting: Search,
+    search: Search,
+
   },
   {
     headerMode: 'none',

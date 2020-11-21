@@ -9,6 +9,7 @@ import Demo from './dev/Demo';
 import ControlPanel from './dev/ControlPanel';
 import Template from './dev/Template';
 import Setting from './src/nav/main/setting/screens/Setting';
+import CreateDeck from './src/nav/main/home/screens/CreateDeck';
 
 const style = StyleSheet.create({
   container: {
@@ -32,7 +33,7 @@ const buttons = [
   { title: 'Ichikawa', element: <Template /> },
   { title: 'Okuda', element: <Setting /> },
   { title: 'Ikeda', element: <Template /> },
-  { title: 'Suzuki', element: <Template /> },
+  { title: 'Suzuki', element: <CreateDeck /> },
   { title: 'Kochiya', element: <Template /> },
   { title: 'Iwasaki', element: <Template /> },
 ];
