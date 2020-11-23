@@ -37,6 +37,7 @@ module.exports = {
     'react/jsx-props-no-spreading': ['off'],
     'no-nested-ternary': ['off'],
     'no-empty-pattern': ['warn'],
-    'arrow-body-style': ['warn']
+    'arrow-body-style': ['warn'],
+    'implicit-arrow-linebreak': ['off'],
   },
 };

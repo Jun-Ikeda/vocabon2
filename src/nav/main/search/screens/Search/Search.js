@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import {
-  View, Text, StyleSheet, /* TouchableOpacity, */
+  View, StyleSheet, /* TouchableOpacity, */
 } from 'react-native';
 
-import HeaderInMain from '../../../../components/header/HeaderInMain';
+import HeaderInMain from '../../../../../components/header/HeaderInMain';
+
+import SearchBar from './SearchBar';
 
 const style = StyleSheet.create({
   container: {
@@ -14,16 +16,17 @@ const style = StyleSheet.create({
 class Search extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      searchText: '',
+    };
   }
 
   render() {
-    // const { navigation } = this.props;
-    // const {} = this.state;
+    const { searchText } = this.state;
     return (
       <View style={style.container}>
         <HeaderInMain title="Search" />
-        <Text>This is Search screen!</Text>
+        <SearchBar setState={(state) => this.setState(state)} searchText={searchText} />
       </View>
     );
   }

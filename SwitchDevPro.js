@@ -9,7 +9,8 @@ import Demo from './dev/Demo';
 import ControlPanel from './dev/ControlPanel';
 import Template from './dev/Template';
 import Setting from './src/nav/main/setting/screens/Setting';
-import CreateDeck from './src/nav/main/home/screens/CreateDeck';
+import CreateDeck from './src/nav/main/home/screens/CreateDeck/CreateDeck';
+import Practice from './dev/Practice/PracticeNavigator';
 
 const style = StyleSheet.create({
   container: {
@@ -28,9 +29,9 @@ const style = StyleSheet.create({
 });
 
 const buttons = [
-  { title: 'Production', element: <Screen /> },
+  { title: 'Product', element: <Screen /> },
   { title: 'Demo', element: <Demo /> },
-  { title: 'Ichikawa', element: <Template /> },
+  { title: 'Ichikawa', element: <Practice /> },
   { title: 'Okuda', element: <Setting /> },
   { title: 'Ikeda', element: <Template /> },
   { title: 'Suzuki', element: <CreateDeck /> },
@@ -51,36 +52,40 @@ class SwitchDevPro extends Component {
     return (
       <View style={style.container}>
         {buttons.map((button, index) => {
-          const isVisible = (index === visible);
-          return (
-            <View
-              style={[
-                { opacity: isVisible ? 1 : 0 },
-                StyleSheet.absoluteFill]}
-              pointerEvents={isVisible ? 'auto' : 'none'}
-            >
-              {button.element}
-            </View>
-          );
+          if (index === visible) {
+            return (
+              <View style={StyleSheet.absoluteFill}>
+                {button.element}
+              </View>
+            );
+          }
+          return null;
         })}
       </View>
     );
   }
 
-  renderButtons = () => (
-    <View style={style.buttonsContainer}>
-      <ScrollView showsVerticalScrollIndicator={false} horizontal>
-        {buttons.map((button, index) => (
-          <TouchableOpacity
-            onPress={() => this.setState({ visible: index })}
-            style={style.button}
-          >
-            <Text>{button.title}</Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-    </View>
-  )
+  renderButtons = () => {
+    const { visible } = this.state;
+    return (
+      <View style={style.buttonsContainer}>
+        <ScrollView showsVerticalScrollIndicator={false} horizontal>
+          {buttons.map((button, index) => {
+            const isVisible = index === visible;
+            return (
+              <TouchableOpacity
+                onPress={() => this.setState({ visible: index })}
+                style={[style.button, { backgroundColor: isVisible ? 'black' : 'white' }]}
+              >
+                <Text style={{ color: isVisible ? 'white' : 'black' }}>{button.title}</Text>
+              </TouchableOpacity>
+
+            );
+          })}
+        </ScrollView>
+      </View>
+    );
+  }
 
   renderControlPanel = () => (
     <ControlPanel />

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 
 import Icon from '../../../../../components/Icon';
 import Color from '../../../../../config/Color';
@@ -32,11 +33,10 @@ const style = StyleSheet.create({
  */
 class AddButton extends Component {
   render() {
+    const { navigation } = this.props;
     return (
       <TouchableOpacity
-        onPress={() => {
-          console.log('Pushed!');
-        }}
+        onPress={() => { navigation.navigate('createdeck'); }}
         style={style.addbutton}
       >
         <Icon.AntDesign
@@ -49,6 +49,7 @@ class AddButton extends Component {
 }
 
 AddButton.propTypes = {
+  navigation: PropTypes.object.isRequired,
 };
 
 AddButton.defaultProps = {

@@ -3,6 +3,8 @@ import {
   View, Text, StyleSheet, TouchableOpacity,
 } from 'react-native';
 
+import Header from '../../src/components/header/Header';
+
 const style = StyleSheet.create({
   container: {
     backgroundColor: 'red',
@@ -69,8 +71,10 @@ class PracticeIW extends Component {
     render() {
       return (
         <View style={style.container}>
-          {this.renderSmallCon1()}
-          {this.renderSmallCon2()}
+          <Header renderTitle={() => {
+            return <Text>AOnyuusiderakusitai</Text>
+          }} >
+          </Header>
           {this.renderButton()}
         </View>
       );

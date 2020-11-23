@@ -1,4 +1,5 @@
 const Color = {
+  black: 'black',
   green1: '#07b86c',
   green2: '#1e8f5e',
   green3: '#5bde80',
@@ -11,7 +12,10 @@ const Color = {
   white2: '#e9e9e9',
   white3: '#d4d4d4',
   white4: '#bfbfbf',
-  cud: {
+  gray1: '#333333',
+  gray2: '#999999',
+  gray3: '#cccccc',
+  cud: { // color universal design
     red: 'rgb(255,75,0)',
     yellow: 'rgb(255,241,0)',
     green: 'rgb(3,175,122)',

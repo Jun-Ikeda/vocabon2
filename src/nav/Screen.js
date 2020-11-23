@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { func } from '../config/Const';
 
 import Nav from './Nav';
@@ -7,14 +7,20 @@ import Nav from './Nav';
 const style = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
   },
   tabularasa: {
     flex: 1,
   },
   landscapeContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  majorNavContainer: {
+    flex: 4,
+  },
+  minorNavContainer: {
+    flex: 7,
   },
 });
 
@@ -32,15 +38,33 @@ class Screen extends Component {
     this.setState({ isPortrait: height > width, isExamined: true });
   }
 
-  renderScreen = () => {
-    const { isPortrait, isExamined } = this.state;
-    if (isExamined) {
-      if (isPortrait) {
-        return <Nav />;
-      }
+  renderMinorNav = () => {
+    const { isPortrait } = this.state;
+    if (!(isPortrait)) {
       return (
-        <View style={style.landscapeContainer}>
-          <Text>Landscape mode is not supported yet</Text>
+        <View style={style.minorNavContainer}>
+          <Nav />
+        </View>
+      );
+    }
+    return null;
+  }
+
+  renderMajorNav = () => (
+    <View style={style.majorNavContainer}>
+      <Nav />
+    </View>
+  )
+
+  renderNavs() {
+    const { isExamined } = this.state;
+    if (isExamined) {
+      return (
+        <View
+          style={style.landscapeContainer}
+        >
+          {this.renderMajorNav()}
+          {/* {this.renderMinorNav()} */}
         </View>
       );
     }
@@ -53,7 +77,7 @@ class Screen extends Component {
         style={style.container}
         onLayout={this.onLayout}
       >
-        {this.renderScreen()}
+        {this.renderNavs()}
       </View>
     );
   }

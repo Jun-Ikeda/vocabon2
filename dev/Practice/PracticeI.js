@@ -4,6 +4,8 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 
+import Header from '../../src/components/header/Header';
+
 const style = StyleSheet.create({
   container: {
     flex: 1,
@@ -28,6 +30,7 @@ class Ikeda extends Component {
     render() {
       return (
         <View style={style.container}>
+          <Header renderTitle={() => <Text>Jun Ikeda</Text>} />
           <Text>I am Jun Ikeda.</Text>
           <Text>I am probably the best React Native Programmer of us</Text>
           <TouchableOpacity onPress={this.gotoKochiya}>

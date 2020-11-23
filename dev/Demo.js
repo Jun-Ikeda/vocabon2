@@ -54,8 +54,16 @@ class Demo extends Component {
   renderItems= () => (
     <View style={{ flex: 1 }}>
       <Item title="Item" onPress={() => this.setState({ menuVisible: true })} />
-      <ItemWithIcon title="Item With Icon" icon={{ name: 'md-settings', collection: 'Ionicons' }} />
-      <ItemWithDescription title="Item With Description" description="a" />
+      <ItemWithIcon
+        title="Item With Icon"
+        icon={{ name: 'md-settings', collection: 'Ionicons' }}
+        onPress={() => console.log('demo pressed')}
+      />
+      <ItemWithDescription
+        title="Item With Description"
+        description="a"
+        onPress={() => console.log('demo pressed')}
+      />
     </View>
   )
 
@@ -101,7 +109,7 @@ class Demo extends Component {
         {this.renderTempComponent()}
         {this.renderTextAdjust()}
         {this.renderUserIcon()}
-        {this.renderCarousel()}
+        {/* {this.renderCarousel()} */}
         {this.renderMenu()}
       </View>
     );

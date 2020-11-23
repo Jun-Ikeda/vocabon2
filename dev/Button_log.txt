@@ -127,7 +127,7 @@ const Button = [
   //   },
   //   {
   //     title: 'Card.load',
-  //     onPress: () => {
+  //     : () => {
   //       Deck.Card.load({
   //         uri:
   //             'https://firebasestorage.googleapis.com/v0/b/vocabon02.appspot.com/o/Deck%2F%26xG04nlKZM.json?alt=media&token=72ef862e-31bf-4190-81af-994ffe682996',

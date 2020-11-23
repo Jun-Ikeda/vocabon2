@@ -1,4 +1,5 @@
-// import Storage from '../src/config/Storage';
+import Unsplash from '../src/config/Unsplash';
+import UUID from '../src/config/UUID';
 
 const Button = [
   {
@@ -7,13 +8,19 @@ const Button = [
       console.log('test');
     },
   },
-  // {
-  //   title: 'Storage',
-  //   onPress: async () => {
-  //     const data = Storage.Function.load({ key: 'isInitialized' });
-  //     console.log(data);
-  //   },
-  // },
+  {
+    title: 'UUID',
+    onPress: () => {
+      console.log(UUID.generate());
+    },
+  },
+  {
+    title: 'Unsplash',
+    onPress: async () => {
+      const imgData = await Unsplash.getRandomImage();
+      console.log(imgData);
+    },
+  },
 ];
 
 export default Button;

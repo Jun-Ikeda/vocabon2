@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, ViewPropTypes } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
 import Header from './Header';
@@ -93,7 +93,7 @@ class HeaderWithBack extends Component {
 }
 
 HeaderWithBack.propTypes = {
-  style: ViewPropTypes.style,
+  style: PropTypes.object,
   renderRight: PropTypes.node,
   renderAll: PropTypes.node,
   large: PropTypes.bool,
@@ -105,9 +105,9 @@ HeaderWithBack.propTypes = {
   onLongPressRight: PropTypes.func,
   navigation: PropTypes.object.isRequired,
   renderCenter: PropTypes.func,
-  titleStyle: ViewPropTypes.style,
+  titleStyle: PropTypes.object,
   title: PropTypes.string,
-  iconStyle: ViewPropTypes.style,
+  iconStyle: PropTypes.object,
 };
 
 HeaderWithBack.defaultProps = {

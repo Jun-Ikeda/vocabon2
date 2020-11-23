@@ -9,14 +9,6 @@ import {
 
 import Button from './Button';
 
-// import State from './src/config/State';
-// import Storage, { StateStorage } from './src/config/Storage';
-// import initState from './src/config/initState';
-// import { Functions } from './src/config/Const';
-// import Firebase, { FireObject } from './src/config/Firebase';
-
-// import Timer from './src/components/Timer';
-
 const style = StyleSheet.create({
   button: {
     borderWidth: 0.5,
@@ -28,9 +20,9 @@ const style = StyleSheet.create({
 });
 
 const renderButtons = () => Button.map((button, index) => {
-  const onPress = () => {
+  const onPress = async () => {
     console.log(`${index + 1}: ${button.title} is called`);
-    button.onPress();
+    await button.onPress();
     console.log(`${index + 1}: ${button.title} ended`);
   };
   return (

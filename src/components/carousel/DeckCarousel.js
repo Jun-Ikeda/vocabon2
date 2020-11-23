@@ -38,9 +38,11 @@ class DeckCarousel extends Component {
 
   renderItem = ({ item }) => {
     const { layout: { width } } = this.state;
+    const { onPress } = this.props;
     return (
       <DeckCard
         item={item}
+        onPress={onPress}
         cardStyle={{
           width: width * 0.6,
           height: width * 0.45,
@@ -51,7 +53,7 @@ class DeckCarousel extends Component {
   }
 
   render() {
-    const { active, layout: { height, width } } = this.state;
+    const { active, layout: { width } } = this.state;
     const { data, containerStyle } = this.props;
     return (
       <View
@@ -84,11 +86,13 @@ class DeckCarousel extends Component {
 DeckCarousel.propTypes = {
   data: PropTypes.array,
   containerStyle: PropTypes.object,
+  onPress: PropTypes.func,
 };
 
 DeckCarousel.defaultProps = {
   data: [],
   containerStyle: {},
+  onPress: () => {},
 };
 
 export default DeckCarousel;

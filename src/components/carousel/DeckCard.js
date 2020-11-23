@@ -17,22 +17,20 @@ const style = StyleSheet.create({
  * @augments {Component<Props, State>}
  * Usage :
  * ```js
- * <TempComponent
+ * <DeckCard
  *  message="Hi, use me in this way" />
  * ```
  */
-class TempComponent extends Component {
+class DeckCard extends Component {
   render() {
-    const { cardStyle, item } = this.props;
+    const { cardStyle, item, onPress } = this.props;
     return (
       <TouchableOpacity
         style={[
           style.carouselContainer,
           cardStyle,
         ]}
-        onPress={() => {
-          console.log('you pressed the deck card!');
-        }}
+        onPress={onPress}
       >
         <Text>{item.title}</Text>
         <Text>aaaa</Text>
@@ -41,13 +39,15 @@ class TempComponent extends Component {
   }
 }
 
-TempComponent.propTypes = {
+DeckCard.propTypes = {
   cardStyle: PropTypes.object,
   item: PropTypes.object.isRequired,
+  onPress: PropTypes.func,
 };
 
-TempComponent.defaultProps = {
+DeckCard.defaultProps = {
   cardStyle: {},
+  onPress: () => {},
 };
 
-export default TempComponent;
+export default DeckCard;

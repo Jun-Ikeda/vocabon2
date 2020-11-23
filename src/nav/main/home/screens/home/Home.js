@@ -4,10 +4,14 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 import HeaderInMain from '../../../../../components/header/HeaderInMain';
 import DeckCarousel from '../../../../../components/carousel/DeckCarousel';
 import AddButton from './AddButton';
+
+// 使ってないかもだけど消さないで
+import { Deck } from '../../../../../../dev/TestData';
 
 const style = StyleSheet.create({
   container: {
@@ -26,18 +30,24 @@ class Home extends Component {
   }
 
   renderRow = ({ title }) => {
-    const {} = this.state;
+    const { navigation } = this.props;
     return (
       <View>
         <Text>{title}</Text>
-        <DeckCarousel data={[{ title: 'this' }, { title: 'is' }, { title: 'test' }]} />
+        <DeckCarousel
+          data={[{ title: 'this' }, { title: 'is' }, { title: 'test' }]}
+          onPress={() => navigation.navigate('deckmenu', { deck: Deck[0] })}
+        />
       </View>
     );
   }
 
-  renderButton = () => (
-    <AddButton />
-  )
+  renderButton = () => {
+    const { navigation } = this.props;
+    return (
+      <AddButton navigation={navigation} />
+    );
+  }
 
   render() {
     return (
@@ -60,5 +70,9 @@ class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 export default Home;

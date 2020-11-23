@@ -12,4 +12,8 @@ const StackNavigator = createStackNavigator(
   },
 );
 
+StackNavigator.navigationOptions = ({ navigation }) => ({
+  tabBarVisible: (navigation.state.index === 0),
+});
+
 export default StackNavigator;
