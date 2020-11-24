@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   View, StyleSheet, /* TouchableOpacity, Text, */
 } from 'react-native';
+import { Provider, Button } from 'react-native-paper';
 import Header from '../src/components/header/Header';
 
 import Icon from '../src/components/Icon';
@@ -100,18 +101,25 @@ class Demo extends Component {
     <TextAdjust message="aaaaa" />
   )
 
+  renderPaper = () => (
+    <Button icon="camera" mode="contained" onPress={() => console.log('pressed')}>Press me</Button>
+  )
+
   render() {
     return (
-      <View style={style.container}>
-        {this.renderBackground()}
-        {this.renderHeader()}
-        {this.renderItems()}
-        {this.renderTempComponent()}
-        {this.renderTextAdjust()}
-        {this.renderUserIcon()}
-        {/* {this.renderCarousel()} */}
-        {this.renderMenu()}
-      </View>
+      <Provider>
+        <View style={style.container}>
+          {/* {this.renderBackground()} */}
+          {this.renderHeader()}
+          {/* {this.renderItems()} */}
+          {/* {this.renderTempComponent()} */}
+          {/* {this.renderTextAdjust()} */}
+          {/* {this.renderUserIcon()} */}
+          {/* {this.renderCarousel()} */}
+          {/* {this.renderMenu()} */}
+          {this.renderPaper()}
+        </View>
+      </Provider>
     );
   }
 }

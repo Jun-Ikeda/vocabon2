@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import {
+  View, Text, Image, Linking, TouchableOpacity,
+} from 'react-native';
 import PropTypes from 'prop-types';
 
 // 使ってないかもだけど消さないで
@@ -71,6 +73,19 @@ class DeckMenu extends Component {
     );
   }
 
+  renderAttribution = () => {
+    const { deck: { thumnail: { user } } } = this.state;
+    return (
+      <TouchableOpacity
+        onPress={() => Linking.openURL(user.link)}
+      >
+        <Text>
+          {`Photo by ${user.name} / Unsplash`}
+        </Text>
+      </TouchableOpacity>
+    );
+  }
+
   renderThumnail = () => {
     const { deck: { thumnail } } = this.state;
     return (
@@ -87,6 +102,7 @@ class DeckMenu extends Component {
         {this.renderHeader()}
         {this.renderContent()}
         {this.renderThumnail()}
+        {this.renderAttribution()}
       </View>
     );
   }
