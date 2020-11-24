@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+// 一個のファイルにつき一個しかできない
+export default classdanostringdanoobjectdano;
+// 何個でも
+export { nanika, nandemo, ii, nannkodemo };
+
+import NanikaDefaultDeExportSaretaYatsu, { nanika, nandemo, ii, nannkodemo } from 'soutaipasu';
+
 const arrowfunction = (a, b) => {
   const sum = a + b;
   return sum;

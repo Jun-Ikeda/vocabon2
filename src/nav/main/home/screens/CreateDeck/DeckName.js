@@ -12,30 +12,39 @@ import { titleMaxLength } from '../../../../../config/Const';
 const style = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    borderWidth: 1,
+    borderBottomWidth: 1,
+    // backgroundColor: 'green',
+    justifyContent: 'space-between',
   },
   textinput: {
+    flex: 1,
     fontSize: 18,
     alignSelf: 'stretch',
     height: 30,
-    borderWidth: 1,
+    // borderWidth: 1,
+    // backgroundColor: 'red',
     // backgroundColor: Color.white1,
   },
   count: {
-    justifyContent: 'center',
     // position: 'absolute',
     // right: 50,
     // paddingTop: 6,
     color: Color.gray3,
-    borderWidth: 1,
+    // borderWidth: 1,
+  },
+  countcontainer: {
+    justifyContent: 'center',
+    paddingHorizontal: 5,
   },
   icon: {
     color: Color.black,
     fontSize: 25,
   },
   iconContainer: {
+    // backgroundColor: 'blue',
     justifyContent: 'center',
-    borderWidth: 1,
+    paddingHorizontal: 5,
+    // borderWidth: 1,
     // position: 'absolute',
     // right: 30,
     // top: 0,
@@ -93,13 +102,15 @@ class DeckName extends Component {
   renderCount = () => {
     const { count } = this.state;
     return (
-      <Text style={style.count}>
-        (
-        {count}
-        /
-        {titleMaxLength}
-        )
-      </Text>
+      <View style={style.countcontainer}>
+        <Text style={style.count}>
+          (
+          {count}
+          /
+          {titleMaxLength}
+          )
+        </Text>
+      </View>
     );
   }
 

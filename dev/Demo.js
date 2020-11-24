@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import {
-  View, StyleSheet, /* TouchableOpacity, Text, */
+  View, StyleSheet, /* TouchableOpacity, */ Text,
 } from 'react-native';
-import { Provider, Button } from 'react-native-paper';
-import Header from '../src/components/header/Header';
+import { Provider } from 'react-native-paper';
+import { Button } from 'react-native-elements';
 
+import Header from '../src/components/header/Header';
 import Icon from '../src/components/Icon';
 import TempComponent from '../src/components/TempComponent';
 import Item from '../src/components/item/Item';
@@ -21,7 +22,18 @@ const style = StyleSheet.create({
     flex: 1,
   },
   header: {
-    backgroundColor: 'blue',
+  },
+});
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    // alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button: {
+    margin: 10,
   },
 });
 
@@ -36,9 +48,8 @@ class Demo extends Component {
   renderHeader = () => (
     <Header
       style={style.header}
-      large
-      renderAll={() => <View style={{ flex: 1, backgroundColor: 'red' }} />}
       renderLeft={this.renderIcons}
+      renderTitle={() => <Text>aaa</Text>}
     />
   )
 
@@ -105,6 +116,55 @@ class Demo extends Component {
     <Button icon="camera" mode="contained" onPress={() => console.log('pressed')}>Press me</Button>
   )
 
+  renderElements = () => (
+    <View>
+      <Button
+        backgroundColor="#ff5622"
+        title="普通のボタン"
+        style={styles.button}
+      />
+      <Button
+        backgroundColor="#ff5622"
+        title="onPress/onLongPress"
+        style={styles.button}
+        onPress={() => console.log('押されたよ')}
+        onLongPress={() => console.log('長く押されたよ')}
+      />
+      <Button
+        raised
+        backgroundColor="#009588"
+        title="RAISED（ちょっと浮き上がる）"
+        style={styles.button}
+      />
+      <Button
+        icon={{ name: 'cached' }}
+        backgroundColor="#9c26b0"
+        title="アイコン付き"
+        style={styles.button}
+      />
+      <Button
+        large
+        backgroundColor="#8ac34a"
+        title="largeだとこのくらいの大きさ"
+        style={styles.button}
+      />
+      <Button
+        large
+        iconRight={{ name: 'code' }}
+        backgroundColor="#ffc107"
+        title="右にもアイコンを付けられる"
+        style={styles.button}
+      />
+      <Button
+        large
+        backgroundColor="#25292f"
+        icon={{ name: 'mark-github', type: 'octicon' }}
+        title="OCTICONも使える"
+        style={styles.button}
+      />
+    </View>
+  )
+
   render() {
     return (
       <Provider>
@@ -117,7 +177,8 @@ class Demo extends Component {
           {/* {this.renderUserIcon()} */}
           {/* {this.renderCarousel()} */}
           {/* {this.renderMenu()} */}
-          {this.renderPaper()}
+          {/* {this.renderPaper()} */}
+          {this.renderElements()}
         </View>
       </Provider>
     );

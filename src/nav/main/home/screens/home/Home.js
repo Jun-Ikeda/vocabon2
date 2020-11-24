@@ -57,13 +57,6 @@ class Home extends Component {
           {this.renderRow({ title: 'LOCAL' })}
           {this.renderRow({ title: 'BOOKMARK' })}
           {this.renderRow({ title: 'BOOKMARK' })}
-          {this.renderRow({ title: 'BOOKMARK' })}
-          {this.renderRow({ title: 'BOOKMARK' })}
-          {this.renderRow({ title: 'BOOKMARK' })}
-          {this.renderRow({ title: 'BOOKMARK' })}
-          {this.renderRow({ title: 'BOOKMARK' })}
-          {this.renderRow({ title: 'BOOKMARK' })}
-          {this.renderRow({ title: 'BOOKMARK' })}
         </ScrollView>
         {this.renderButton()}
       </View>

@@ -36,7 +36,7 @@ class DeckMenu extends Component {
           term: '',
           definition: '',
         },
-        thumnail: {
+        thumbnail: {
           uri: '',
           user: {
             link: '',
