@@ -92,6 +92,7 @@ class Header extends Component {
         style={part.style}
         onPress={part.onPress}
         onLongPress={part.onLongPress}
+        key={part.name}
       >
         {part.render()}
       </TouchableOpacity>
@@ -133,10 +134,10 @@ class Header extends Component {
 
 Header.propTypes = {
   style: PropTypes.object,
-  renderLeft: PropTypes.node,
-  renderTitle: PropTypes.node,
-  renderRight: PropTypes.node,
-  renderAll: PropTypes.node,
+  renderLeft: PropTypes.func,
+  renderTitle: PropTypes.func,
+  renderRight: PropTypes.func,
+  renderAll: PropTypes.func,
   large: PropTypes.bool,
   medium: PropTypes.bool,
   onPressLeft: PropTypes.func,
@@ -152,15 +153,15 @@ Header.defaultProps = {
   renderLeft: () => null,
   renderTitle: () => null,
   renderRight: () => null,
-  renderAll: () => { throw new Error('the function is null'); },
+  renderAll: () => { throw new Error('the function is null'); return null },
   large: false,
   medium: false,
-  onPressLeft: () => {},
-  onLongPressLeft: () => {},
-  onPressTitle: () => {},
-  onLongPressTitle: () => {},
-  onPressRight: () => {},
-  onLongPressRight: () => {},
+  onPressLeft: () => { },
+  onLongPressLeft: () => { },
+  onPressTitle: () => { },
+  onLongPressTitle: () => { },
+  onPressRight: () => { },
+  onLongPressRight: () => { },
 };
 
 export default Header;

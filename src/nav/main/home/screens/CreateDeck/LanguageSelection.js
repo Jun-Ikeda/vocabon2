@@ -96,7 +96,7 @@ class LanguageSelection extends Component {
     return (
       <View>
         {pickers.map((picker) => (
-          <View>
+          <View key={picker.title.toLowerCase()}>
             <Text>{picker.title}</Text>
             <RNPickerSelect
               onValueChange={picker.onValueChange}

@@ -75,6 +75,7 @@ renderButtons = () => {
           <TouchableOpacity
             style={style.iconContainer}
             onPress={button.onPress}
+            key={button.icon.name.toLowerCase()}
           >
             <IconFamily name={button.icon.name} style={style.icon} />
           </TouchableOpacity>

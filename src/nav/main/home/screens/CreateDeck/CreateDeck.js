@@ -138,7 +138,7 @@ class CreateDeck extends Component {
       },
     ];
     return items.map((item) => (
-      <View style={style.itemContainer}>
+      <View style={style.itemContainer} key={item.title.toLowerCase()}>
         <View style={style.itemTitleBox}>
           <Text style={style.itemTitle}>{item.title}</Text>
         </View>

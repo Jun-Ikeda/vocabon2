@@ -9,10 +9,10 @@ import Demo from './dev/Demo';
 import ControlPanel from './dev/ControlPanel';
 import Template from './dev/Template';
 import Setting from './src/nav/main/setting/screens/Setting';
-import CreateDeck from './src/nav/main/home/screens/CreateDeck/CreateDeck';
+import CreateDeck from './src/nav/main/home/screens/createdeck/CreateDeck';
 import Practice from './dev/Practice/PracticeNavigator';
-import Play from './src/screens/deck/Play/Play';
-import Account from './src/nav/main/setting/screens/settingitems/Account';
+import Play from './src/screens/deck/play/Play';
+// import Account from './src/nav/main/setting/screens/settingitems/Account';
 
 const style = StyleSheet.create({
   container: {
@@ -56,7 +56,7 @@ class SwitchDevPro extends Component {
         {buttons.map((button, index) => {
           if (index === visible) {
             return (
-              <View style={StyleSheet.absoluteFill}>
+              <View style={StyleSheet.absoluteFill} key={button.title.toLowerCase()}>
                 {button.element}
               </View>
             );
@@ -78,6 +78,7 @@ class SwitchDevPro extends Component {
               <TouchableOpacity
                 onPress={() => this.setState({ visible: index })}
                 style={[style.button, { backgroundColor: isVisible ? 'black' : 'white' }]}
+                key={button.title.toLowerCase()}
               >
                 <Text style={{ color: isVisible ? 'white' : 'black' }}>{button.title}</Text>
               </TouchableOpacity>

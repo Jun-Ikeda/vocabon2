@@ -48,7 +48,7 @@ class PlayButtons extends Component {
       const { collection, name, onPress } = button;
       const IconComponent = Icon[collection];
       return (
-        <TouchableOpacity style={style.button} onPress={onPress}>
+        <TouchableOpacity style={style.button} onPress={onPress} key={button.name.toLowerCase()}>
           <IconComponent name={name} style={style.icon} />
         </TouchableOpacity>
       );

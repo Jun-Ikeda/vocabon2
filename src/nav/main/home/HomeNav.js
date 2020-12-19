@@ -1,8 +1,8 @@
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Home from './screens/Home/Home';
-import CreateDeck from './screens/CreateDeck/CreateDeck';
-import DeckMenu from '../../../screens/deck/DeckMenu/DeckMenu';
+import Home from './screens/home/Home';
+import CreateDeck from './screens/createdeck/CreateDeck';
+import DeckMenu from '../../../screens/deck/deckmenu/DeckMenu';
 // import Template from '../../../../dev/Template';
 
 const StackNavigator = createStackNavigator(

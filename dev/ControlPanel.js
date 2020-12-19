@@ -35,6 +35,7 @@ const renderButtons = () => Button.map((button, index) => {
         },
       ]}
       onPress={onPress}
+      key={button.title.toLowerCase()}
     >
       <Text
         style={{

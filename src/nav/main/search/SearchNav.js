@@ -1,6 +1,6 @@
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Search from './screens/Search/Search';
+import Search from './screens/search/Search';
 // import Template from '../../../../dev/Template';
 
 const StackNavigator = createStackNavigator(

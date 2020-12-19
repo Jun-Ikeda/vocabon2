@@ -8,7 +8,7 @@ import HeaderInMain from '../../../../components/header/HeaderInMain';
 import Item from '../../../../components/item/Item';
 import Color from '../../../../config/Color';
 
-import Account from './settingitems/Account';
+// import Account from './settingitems/Account';
 // import Icon from '../../../../components/Icon';
 
 const style = StyleSheet.create({
@@ -77,7 +77,7 @@ class Setting extends Component {
     return items.map((item) => (
       <View style={style.list}>
         {/* <FlatList data={items} renderItem={renderSetting} /> */}
-        <TouchableOpacity onPress={() => navigation.navigate(item.nav)}>
+        <TouchableOpacity onPress={() => navigation.navigate(item.nav)} key={item.title.toLowerCase}>
           <ListItem.Content style={style.itemContainer}>
             <ListItem.Title>
               <Text style={style.text1}>{item.title}</Text>
