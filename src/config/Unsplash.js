@@ -12,7 +12,7 @@ export const unshortenURI = (uri) => `https://images.unsplash.com/${uri}`;
 export const getShortenedURI = (json) => {
   const uri = json.results[0].urls.regular;
   //   const shortened = uri.replace('https://images.unsplash.com/', '');
-  const shortened = unshortenURI(uri);
+  const shortened = shortenURI(uri);
   const user = {
     name: json.results[0].user.name,
     link: json.results[0].user.links.html,

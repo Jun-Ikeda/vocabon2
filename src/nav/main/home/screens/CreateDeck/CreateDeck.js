@@ -12,7 +12,7 @@ import DeckName from './DeckName';
 
 // 使ってないけど消さないで
 // eslint-disable-next-line no-unused-vars
-import { Deck } from '../../../../../../dev/TestData';
+import { DeckGeneral } from '../../../../../../dev/TestData';
 import UUID from '../../../../../config/UUID';
 import Unsplash from '../../../../../config/Unsplash';
 
@@ -59,7 +59,7 @@ const style = StyleSheet.create({
 });
 
 /**
- * CreateDeck Screen
+ * CreateDeck Screenｙ
  * @augments {Component<Props, State>}
  * Usage :
  * ```js
@@ -77,22 +77,22 @@ class CreateDeck extends Component {
         definition: '',
       },
       id: UUID.generate(),
-      thumnail: {},
+      thumbnail: {},
     };
   }
 
   async componentDidMount() {
-    const thumnail = await Unsplash.getRandomImage();
-    this.setState({ thumnail });
+    const thumbnail = await Unsplash.getRandomImage();
+    this.setState({ thumbnail });
   }
 
   goToHome = () => {
     const {
-      title, language, id, thumnail,
+      title, language, id, thumbnail,
     } = this.state;
     const { navigation } = this.props;
     console.log({
-      title, language, id, thumnail,
+      title, language, id, thumbnail,
     });
     navigation.goBack();
   }

@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import {
   View, Text, StyleSheet, FlatList, TouchableOpacity,
 } from 'react-native';
+import { ListItem, Divider } from 'react-native-elements';
 
 import HeaderInMain from '../../../../components/header/HeaderInMain';
 import Item from '../../../../components/item/Item';
 import Color from '../../../../config/Color';
+
+import Account from './settingitems/Account';
 // import Icon from '../../../../components/Icon';
 
 const style = StyleSheet.create({
@@ -13,15 +16,17 @@ const style = StyleSheet.create({
     flex: 1,
     // textAlign: 'center',
   },
+  list: {
+    borderWidth: 0,
+    flexDirection: 'column',
+  },
   itemContainer: {
     // alignItems: 'flex-start',
     justifyContent: 'center',
     height: 100,
     marginTop: 40,
-    borderTopWidth: 2,
-    borderBottomWidth: 2,
+    borderWidth: 2,
     backgroundColor: Color.white2,
-    borderRadius: 10,
   },
   text1: {
     fontSize: 30,
@@ -50,40 +55,46 @@ class Setting extends Component {
   }
 
   renderItems = () => {
-    const items: Item[] = [
+    const { navigation } = this.props;
+    const items = [
       {
         title: 'Account',
+        nav: 'account',
       },
       {
-        title: 'Nanika',
-      },
-      {
-        title: 'Language',
-      },
-      {
-        title: 'Country',
+        title: 'Basic Setting',
+        nav: 'basicsetting',
       },
     ];
-    const renderSetting = ({ item }: {item: Item}) => (
-      <TouchableOpacity
-        onpress={() => { console.log('button Pressed'); }}
-        style={style.itemContainer}
-      >
-        <Text style={style.text1}>{item.title}</Text>
-      </TouchableOpacity>
-    );
-    return (
-      <View>
-        <FlatList data={items} renderItem={renderSetting} />
+    // const renderSetting = ({ item }: {item: Item}) => (
+    //   <TouchableOpacity
+    //     onpress={() => {navigation.navigate('account');}}
+    //     style={style.itemContainer}
+    //   >
+    //     <Text style={style.text1}>{item.title}</Text>
+    //   </TouchableOpacity>
+    // );
+    return items.map((item) => (
+      <View style={style.list}>
+        {/* <FlatList data={items} renderItem={renderSetting} /> */}
+        <TouchableOpacity onPress={() => navigation.navigate(item.nav)}>
+          <ListItem.Content style={style.itemContainer}>
+            <ListItem.Title>
+              <Text style={style.text1}>{item.title}</Text>
+            </ListItem.Title>
+          </ListItem.Content>
+        </TouchableOpacity>
       </View>
-    );
+    ));
   }
 
   render() {
     return (
       <View style={style.container}>
         <HeaderInMain title="Setting" titleStyle={style.text2} />
-        {this.renderItems()}
+        <ListItem style={{ flexDirection: 'column' }}>
+          {this.renderItems()}
+        </ListItem>
       </View>
     );
   }

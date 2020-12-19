@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {
-  View, StyleSheet, /* TouchableOpacity, */ Text,
+  View, StyleSheet, /* TouchableOpacity, */ Text, Image,
 } from 'react-native';
 import { Provider } from 'react-native-paper';
-import { Button } from 'react-native-elements';
+import { Button, Card, CheckBox } from 'react-native-elements';
 
 import Header from '../src/components/header/Header';
 import Icon from '../src/components/Icon';
@@ -42,6 +42,7 @@ class Demo extends Component {
     super(props);
     this.state = {
       menuVisible: false,
+      isChecked: false,
     };
   }
 
@@ -118,50 +119,50 @@ class Demo extends Component {
 
   renderElements = () => (
     <View>
+      <Card containerStyle={{}} wrapperStyle={{}}>
+        <Card.Title>CARD of shimpei</Card.Title>
+        <Card.Divider />
+        <View
+          style={{
+            position: 'relative',
+            alignItems: 'center',
+          }}
+        >
+          <Image
+            style={{ width: '100%', height: 300 }}
+            resizeMode="contain"
+            source={{
+              uri:
+              'https://avatars0.githubusercontent.com/u/32242596?s=460&u=1ea285743fc4b083f95d6ee0be2e7bb8dcfc676e&v=4',
+            }}
+          />
+          <Text>sekibun no oni ni naritai</Text>
+        </View>
+      </Card>
       <Button
-        backgroundColor="#ff5622"
-        title="普通のボタン"
-        style={styles.button}
+        buttonStyle={{
+          width: 180,
+          backgroundColor: '#00F',
+        }}
+        containerStyle={{ margin: 5 }}
+        disabledStyle={{
+          borderWidth: 2,
+          borderColor: '#00F',
+        }}
+        disabledTitleStyle={{ color: '00F' }}
+        linearGradientProps={null}
+        icon={<Icon name="react" size={15} color="#0FF" />}
+        iconContainerStyle={{ background: '#000' }}
+        loading
+        loadingProps={{ animating: true }}
+        loadingStyle={{}}
+        onPress={() => alert('otukare')}
+        title="Hello"
+        titleProps={{}}
+        titleStyle={{ marginHorizontal: 5 }}
+        type="clear"
       />
-      <Button
-        backgroundColor="#ff5622"
-        title="onPress/onLongPress"
-        style={styles.button}
-        onPress={() => console.log('押されたよ')}
-        onLongPress={() => console.log('長く押されたよ')}
-      />
-      <Button
-        raised
-        backgroundColor="#009588"
-        title="RAISED（ちょっと浮き上がる）"
-        style={styles.button}
-      />
-      <Button
-        icon={{ name: 'cached' }}
-        backgroundColor="#9c26b0"
-        title="アイコン付き"
-        style={styles.button}
-      />
-      <Button
-        large
-        backgroundColor="#8ac34a"
-        title="largeだとこのくらいの大きさ"
-        style={styles.button}
-      />
-      <Button
-        large
-        iconRight={{ name: 'code' }}
-        backgroundColor="#ffc107"
-        title="右にもアイコンを付けられる"
-        style={styles.button}
-      />
-      <Button
-        large
-        backgroundColor="#25292f"
-        icon={{ name: 'mark-github', type: 'octicon' }}
-        title="OCTICONも使える"
-        style={styles.button}
-      />
+
     </View>
   )
 

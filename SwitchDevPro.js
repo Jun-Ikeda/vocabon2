@@ -11,6 +11,8 @@ import Template from './dev/Template';
 import Setting from './src/nav/main/setting/screens/Setting';
 import CreateDeck from './src/nav/main/home/screens/CreateDeck/CreateDeck';
 import Practice from './dev/Practice/PracticeNavigator';
+import Play from './src/screens/deck/Play/Play';
+import Account from './src/nav/main/setting/screens/settingitems/Account';
 
 const style = StyleSheet.create({
   container: {
@@ -32,8 +34,8 @@ const buttons = [
   { title: 'Product', element: <Screen /> },
   { title: 'Demo', element: <Demo /> },
   { title: 'Ichikawa', element: <Practice /> },
+  { title: 'Ikeda', element: <Play /> },
   { title: 'Okuda', element: <Setting /> },
-  { title: 'Ikeda', element: <Template /> },
   { title: 'Suzuki', element: <CreateDeck /> },
   { title: 'Kochiya', element: <Template /> },
   { title: 'Iwasaki', element: <Template /> },

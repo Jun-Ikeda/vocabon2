@@ -11,7 +11,7 @@ import DeckCarousel from '../../../../../components/carousel/DeckCarousel';
 import AddButton from './AddButton';
 
 // 使ってないかもだけど消さないで
-import { Deck } from '../../../../../../dev/TestData';
+import { DeckGeneral } from '../../../../../../dev/TestData';
 
 const style = StyleSheet.create({
   container: {
@@ -36,7 +36,7 @@ class Home extends Component {
         <Text>{title}</Text>
         <DeckCarousel
           data={[{ title: 'this' }, { title: 'is' }, { title: 'test' }]}
-          onPress={() => navigation.navigate('deckmenu', { deck: Deck[0] })}
+          onPress={() => navigation.navigate('deckmenu', { deck: DeckGeneral[0] })}
         />
       </View>
     );

@@ -1,4 +1,5 @@
 const Color = {
+  defaultBackground: '#efefef',
   black: 'black',
   green1: '#07b86c',
   green2: '#1e8f5e',

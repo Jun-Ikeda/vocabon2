@@ -7,10 +7,9 @@ import Icon from '../Icon';
 // import Color from '../../config/Color';
 
 const style = StyleSheet.create({
-  // headerIcon: {
-  //   color: Color.font2,
-  //   fontSize: 25,
-  // },
+  headerIcon: {
+    fontSize: 21,
+  },
   title: {},
 });
 
@@ -69,7 +68,7 @@ class HeaderWithBack extends Component {
         renderLeft={() => (
           <Icon.Ionicons
             name="ios-arrow-back"
-            style={[headerStyle.headerIcon, iconStyle]}
+            style={[headerStyle.headerIcon, iconStyle, style.headerIcon]}
           />
         )}
         renderTitle={() => this.renderTitle()}

@@ -37,16 +37,16 @@ class DeckCarousel extends Component {
   }
 
   renderItem = ({ item }) => {
-    const { layout: { width } } = this.state;
+    const { layout } = this.state;
     const { onPress } = this.props;
     return (
       <DeckCard
         item={item}
         onPress={onPress}
         cardStyle={{
-          width: width * 0.6,
-          height: width * 0.45,
-          borderRadius: width * 0.05,
+          width: layout.width * 0.6,
+          height: layout.width * 0.5,
+          borderRadius: layout.width * 0.03,
         }}
       />
     );
