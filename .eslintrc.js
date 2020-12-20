@@ -32,7 +32,7 @@ module.exports = {
     'react-native/split-platform-components': 2,
     // 'react-native/no-inline-styles': 2,
     // 'react-native/no-color-literals': 2,
-    'react-native/no-raw-text': 2,
+    'react-native/no-raw-text': ['off'],
     'react/forbid-prop-types': ['off'],
     'react/jsx-props-no-spreading': ['off'],
     'no-nested-ternary': ['off'],

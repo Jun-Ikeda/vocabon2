@@ -3,9 +3,11 @@ import {
   View, StyleSheet, TextInput, Text, TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import Color from '../../../../../config/Color';
-import Icon from '../../../../../components/Icon';
-import { titleMaxLength } from '../../../../../config/Const';
+
+import Color from '../../config/Color';
+import { titleMaxLength } from '../../config/Const';
+
+import Icon from '../Icon';
 
 // const maintextColor = Color.gray1;
 

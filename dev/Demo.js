@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {
-  View, StyleSheet, /* TouchableOpacity, */ Text, Image,
+  View, StyleSheet, TouchableOpacity, Text, Image,
 } from 'react-native';
 import { Provider } from 'react-native-paper';
 import { Button, Card, CheckBox } from 'react-native-elements';
+import CardFlip from 'react-native-card-flip';
 
 import Header from '../src/components/header/Header';
 import Icon from '../src/components/Icon';
@@ -16,6 +17,7 @@ import TextAdjust from '../src/components/TextAdjust';
 import PopUpMenu from '../src/components/menu/PopUpMenu';
 import UserIcon from '../src/components/UserIcon';
 import DeckCarousel from '../src/components/carousel/DeckCarousel';
+import Color from '../src/config/Color';
 
 const style = StyleSheet.create({
   container: {
@@ -23,17 +25,14 @@ const style = StyleSheet.create({
   },
   header: {
   },
-});
-
-const styles = StyleSheet.create({
-  container: {
+  cardContainer: {
     flex: 1,
-    backgroundColor: '#fff',
-    // alignItems: 'center',
-    justifyContent: 'center',
   },
-  button: {
-    margin: 10,
+  card: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'red',
   },
 });
 
@@ -166,6 +165,17 @@ class Demo extends Component {
     </View>
   )
 
+  renderCardFlip = () => (
+    <CardFlip style={style.cardContainer} ref={(card) => this.card = card}>
+      <TouchableOpacity style={style.card} onPress={() => this.card.flip()}>
+        <Text>AB</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={style.card} onPress={() => this.card.flip()}>
+        <Text>CD</Text>
+      </TouchableOpacity>
+    </CardFlip>
+  )
+
   render() {
     return (
       <Provider>
@@ -179,7 +189,8 @@ class Demo extends Component {
           {/* {this.renderCarousel()} */}
           {/* {this.renderMenu()} */}
           {/* {this.renderPaper()} */}
-          {this.renderElements()}
+          {/* {this.renderElements()} */}
+          {this.renderCardFlip()}
         </View>
       </Provider>
     );

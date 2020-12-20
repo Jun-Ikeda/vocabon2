@@ -77,7 +77,7 @@ class Setting extends Component {
     return items.map((item) => (
       <View style={style.list}>
         {/* <FlatList data={items} renderItem={renderSetting} /> */}
-        <TouchableOpacity onPress={() => navigation.navigate(item.nav)} key={item.title.toLowerCase}>
+        <TouchableOpacity onPress={() => navigation.navigate(item.nav)} key={item.title.toLowerCase()}>
           <ListItem.Content style={style.itemContainer}>
             <ListItem.Title>
               <Text style={style.text1}>{item.title}</Text>

@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import DeckSwiper from 'react-native-deck-swiper';
 import { Button } from 'react-native-elements';
+import CardFlip from 'react-native-card-flip';
 
 import Color from '../../../config/Color';
 import { func } from '../../../config/Const';
@@ -15,6 +16,7 @@ import { DeckGeneral, DeckContent } from '../../../../dev/TestData';
 import PlayCounter from './PlayCounter';
 import Icon from '../../../components/Icon';
 import PlayButtons from './PlayButtons';
+import PlayCard from './PlayCard';
 
 const style = StyleSheet.create({
   container: {
@@ -30,6 +32,15 @@ const style = StyleSheet.create({
     borderColor: '#E8E8E8',
     justifyContent: 'center',
     backgroundColor: 'white',
+  },
+  cardContainer: {
+    flex: 1,
+  },
+  cardflip: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'red',
   },
   text: {
     textAlign: 'center',
@@ -94,11 +105,20 @@ class Play extends Component {
         <DeckSwiper
           cards={DeckContent}
           renderCard={(card) => (
-            <View style={style.card}>
-              <Text style={style.text}>{card.term}</Text>
-              <Text style={style.text}>{card.definition}</Text>
-              <Text style={style.text}>{card.example}</Text>
-            </View>
+            <PlayCard />
+            // <CardFlip style={style.cardContainer} ref={(card) => this.card = card}>
+            //   <TouchableOpacity style={style.cardflip} onPress={() => this.card.flip()}>
+            //     <Text style={style.text}>{card.term}</Text>
+            //   </TouchableOpacity>
+            //   <TouchableOpacity style={style.cardflip} onPress={() => this.card.flip()}>
+            //     <Text style={style.text}>{card.definition}</Text>
+            //   </TouchableOpacity>
+            // </CardFlip>
+            // <View style={style.card}>
+            //   <Text style={style.text}>{card.term}</Text>
+            //   <Text style={style.text}>{card.definition}</Text>
+            //   <Text style={style.text}>{card.example}</Text>
+            // </View>
           )}
           ref={(swiper) => {
             this.swiper = swiper;

@@ -25,8 +25,8 @@ class PlayButtons extends Component {
       {
         collection: 'Entypo',
         name: 'cross',
-        // onPress: () => swiper.swipeLeft(),
-        onPress: () => alert(JSON.stringify(swiper)),
+        onPress: () => swiper.swipeLeft(),
+        // onPress: () => alert('cross'),
       },
       {
         collection: 'MaterialIcons',

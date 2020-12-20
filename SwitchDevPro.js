@@ -12,6 +12,7 @@ import Setting from './src/nav/main/setting/screens/Setting';
 import CreateDeck from './src/nav/main/home/screens/createdeck/CreateDeck';
 import Practice from './dev/Practice/PracticeNavigator';
 import Play from './src/screens/deck/play/Play';
+import Property from './src/screens/deck/property/Property';
 // import Account from './src/nav/main/setting/screens/settingitems/Account';
 
 const style = StyleSheet.create({
@@ -38,7 +39,7 @@ const buttons = [
   { title: 'Okuda', element: <Setting /> },
   { title: 'Suzuki', element: <CreateDeck /> },
   { title: 'Kochiya', element: <Template /> },
-  { title: 'Iwasaki', element: <Template /> },
+  { title: 'Iwasaki', element: <Property /> },
 ];
 
 class SwitchDevPro extends Component {

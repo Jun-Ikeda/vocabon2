@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import RNPickerSelect from 'react-native-picker-select';
-import Icon from '../../../../../components/Icon';
+import Icon from '../Icon';
 
 const pickerSelectStyles = StyleSheet.create({
   // eslint-disable-next-line react-native/no-unused-styles

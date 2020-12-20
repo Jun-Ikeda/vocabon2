@@ -7,8 +7,8 @@ import PropTypes from 'prop-types';
 import Color from '../../../../../config/Color';
 import Icon from '../../../../../components/Icon';
 import HeaderWithBack from '../../../../../components/header/HeaderWithBack';
-import LanguageSelection from './LanguageSelection';
-import DeckName from './DeckName';
+import LanguageSelection from '../../../../../components/navscreens/LanguageSelection';
+import DeckName from '../../../../../components/navscreens/DeckName';
 
 // 使ってないけど消さないで
 // eslint-disable-next-line no-unused-vars
