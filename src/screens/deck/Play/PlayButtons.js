@@ -20,7 +20,7 @@ const style = StyleSheet.create({
  */
 class PlayButtons extends Component {
   renderButtons = () => {
-    const { swiper } = this.props;
+    const { swiper, flip } = this.props;
     const buttons = [
       {
         collection: 'Entypo',
@@ -31,7 +31,7 @@ class PlayButtons extends Component {
       {
         collection: 'MaterialIcons',
         name: 'flip',
-        onPress: () => alert('flip'),
+        onPress: () => flip(),
       },
       //   {
       //     collection: 'AntDesign',

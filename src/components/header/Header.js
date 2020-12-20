@@ -150,10 +150,10 @@ Header.propTypes = {
 
 Header.defaultProps = {
   style: {},
-  renderLeft: () => null,
-  renderTitle: () => null,
-  renderRight: () => null,
-  renderAll: () => { throw new Error('the function is null'); return null },
+  renderLeft: () => { },
+  renderTitle: () => { },
+  renderRight: () => { },
+  renderAll: () => { throw new Error('the function is null'); },
   large: false,
   medium: false,
   onPressLeft: () => { },

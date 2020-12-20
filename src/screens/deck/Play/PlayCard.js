@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 import CardFlip from 'react-native-card-flip';
+import PropTypes from 'prop-types';
+// import HTML from 'react-native-render-html';
 
 import Color from '../../../config/Color';
 
@@ -12,7 +14,7 @@ const style = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Color.primary1,
+    backgroundColor: Color.white1,
   },
   label: {
     color: Color.font1,
@@ -20,31 +22,38 @@ const style = StyleSheet.create({
   },
 });
 
-export default class PlayCard extends Component {
+class PlayCard extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
-    this.card = {};
+    this.state = {};
   }
 
+  flip = () => {
+    const { term } = this.props;
+    this[`card${term}`].flip();
+  };
+
   render() {
+    const {
+      term,
+    } = this.props;
     return (
       <CardFlip
         style={style.cardflip}
+        duration={300}
         ref={(cardRef) => {
-          this.card = cardRef;
+          this[`card${term}`] = cardRef;
         }}
       >
         <TouchableOpacity
-          style={style.card}
-          onPress={() => this.card.flip()}
+          style={[style.card]}
+          onPress={() => this.flip()}
         >
           <Text style={style.label}>AB</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={style.card}
-          onPress={() => this.card.flip()}
+          style={[style.card]}
+          onPress={() => this.flip()}
         >
           <Text style={style.label}>CD</Text>
         </TouchableOpacity>
@@ -52,3 +61,13 @@ export default class PlayCard extends Component {
     );
   }
 }
+
+PlayCard.propTypes = {
+  term: PropTypes.string,
+};
+
+PlayCard.defaultProps = {
+  term: '',
+};
+
+export default PlayCard;

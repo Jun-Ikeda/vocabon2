@@ -93,8 +93,8 @@ class HeaderWithBack extends Component {
 
 HeaderWithBack.propTypes = {
   style: PropTypes.object,
-  renderRight: PropTypes.node,
-  renderAll: PropTypes.node,
+  renderRight: PropTypes.func,
+  renderAll: PropTypes.func,
   large: PropTypes.bool,
   onPressLeft: PropTypes.func,
   onLongPressLeft: PropTypes.func,
@@ -111,15 +111,15 @@ HeaderWithBack.propTypes = {
 
 HeaderWithBack.defaultProps = {
   style: {},
-  renderRight: () => null,
+  renderRight: () => { },
   renderAll: () => { throw new Error('the function is null'); },
   large: false,
   onPressLeft: () => { throw new Error('the function is null'); },
-  onLongPressLeft: () => {},
-  onPressTitle: () => {},
-  onLongPressTitle: () => {},
-  onPressRight: () => {},
-  onLongPressRight: () => {},
+  onLongPressLeft: () => { },
+  onPressTitle: () => { },
+  onLongPressTitle: () => { },
+  onPressRight: () => { },
+  onLongPressRight: () => { },
   renderCenter: () => { throw new Error('the function is null'); },
   titleStyle: {},
   title: '',
