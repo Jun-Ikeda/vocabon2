@@ -19,57 +19,74 @@ const style = StyleSheet.create({
  * ```
  */
 class PlayButtons extends Component {
-  renderButtons = () => {
-    const { swiper, flip } = this.props;
+  renderButton = (button) => {
+    const { collection, name, onPress } = button;
+    const IconComponent = Icon[collection];
+    return (
+      <TouchableOpacity style={style.button} onPress={onPress} key={button.name.toLowerCase()}>
+        <IconComponent name={name} style={style.icon} />
+      </TouchableOpacity>
+    );
+  }
+
+  renderThreeButtons = () => {
+    const { flip, swipeLeft, swipeRight } = this.props;
     const buttons = [
       {
         collection: 'Entypo',
         name: 'cross',
-        onPress: () => swiper.swipeLeft(),
-        // onPress: () => alert('cross'),
+        onPress: () => swipeLeft(),
       },
       {
         collection: 'MaterialIcons',
         name: 'flip',
         onPress: () => flip(),
       },
-      //   {
-      //     collection: 'AntDesign',
-      //     name: 'back',
-      //     onPress: () => alert('back'),
-      //   },
       {
         collection: 'Entypo',
         name: 'check',
-        onPress: () => swiper.swipeRight(),
+        onPress: () => swipeRight(),
       },
     ];
-    return buttons.map((button) => {
-      const { collection, name, onPress } = button;
-      const IconComponent = Icon[collection];
-      return (
-        <TouchableOpacity style={style.button} onPress={onPress} key={button.name.toLowerCase()}>
-          <IconComponent name={name} style={style.icon} />
-        </TouchableOpacity>
-      );
-    });
+    return buttons.map(this.renderButton);
+  }
+
+  renderBackButton = () => {
+    const { swipeBack } = this.props;
+    const button = {
+      collection: 'AntDesign',
+      name: 'back',
+      onPress: () => swipeBack(),
+    };
+    return this.renderButton(button);
   }
 
   render() {
     return (
-      <View style={style.container}>
-        {this.renderButtons()}
+      <View>
+        <View style={style.container}>
+          {this.renderThreeButtons()}
+        </View>
+        <View style={style.container}>
+          {this.renderBackButton()}
+        </View>
       </View>
     );
   }
 }
 
 PlayButtons.propTypes = {
-  swiper: PropTypes.object,
+  flip: PropTypes.func,
+  swipeLeft: PropTypes.func,
+  swipeRight: PropTypes.func,
+  swipeBack: PropTypes.func,
 };
 
 PlayButtons.defaultProps = {
-  swiper: {},
+  flip: () => {},
+  swipeLeft: () => {},
+  swipeRight: () => {},
+  swipeBack: () => {},
 };
 
 export default PlayButtons;

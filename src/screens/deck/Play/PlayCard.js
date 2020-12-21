@@ -35,7 +35,7 @@ class PlayCard extends Component {
 
   render() {
     const {
-      term,
+      term, content,
     } = this.props;
     return (
       <CardFlip
@@ -49,13 +49,13 @@ class PlayCard extends Component {
           style={[style.card]}
           onPress={() => this.flip()}
         >
-          <Text style={style.label}>AB</Text>
+          <Text style={style.label}>{content.term}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[style.card]}
           onPress={() => this.flip()}
         >
-          <Text style={style.label}>CD</Text>
+          <Text style={style.label}>{content.definition}</Text>
         </TouchableOpacity>
       </CardFlip>
     );
@@ -63,11 +63,11 @@ class PlayCard extends Component {
 }
 
 PlayCard.propTypes = {
-  term: PropTypes.string,
+  content: PropTypes.object,
 };
 
 PlayCard.defaultProps = {
-  term: '',
+  content: {},
 };
 
 export default PlayCard;

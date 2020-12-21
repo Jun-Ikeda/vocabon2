@@ -42,6 +42,10 @@ export const func = {
   },
 };
 
-export default { header, carousel, func };
+export const play = {
+
+}
+
+export default { header, carousel, func, play };
 
 export const titleMaxLength = 20;
