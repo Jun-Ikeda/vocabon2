@@ -94,7 +94,11 @@ class DeckMenu extends Component {
         right: 0,
       }}
       >
-        <HeaderWithBack navigation={navigation} />
+        <HeaderWithBack
+          navigation={navigation}
+          iconStyle={{ color: Color.black }}
+          style={{ backgroundColor: 'transparent' }}
+        />
       </View>
     );
   }

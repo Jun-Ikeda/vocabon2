@@ -22,6 +22,7 @@ const style = StyleSheet.create({
     // borderBottomColor: Color.gray1,
     // borderRightColor: Color.gray1,
     backgroundColor: Color.white1,
+    paddingVertical: 5,
     margin: 3,
   },
 });
@@ -68,7 +69,7 @@ export default class DeckMenuButtons extends Component {
       {
         title: 'Edit',
         icon: () => <Icon.Feather name="edit" size={iconsize} style={style.icon} />,
-        onPress: () => alert('edit'),
+        onPress: () => navigation.navigate('edit'),
         textStyle: {},
       },
       {

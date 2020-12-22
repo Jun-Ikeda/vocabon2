@@ -3,7 +3,7 @@ const Color = {
   black: 'black',
   green1: '#07b86c',
   green2: '#1e8f5e',
-  green3: '#5bde80',
+  green3: '#26a36d',
   green4: '#b9d08b',
   green5: '#82ba6c',
   green6: '#3ca897',

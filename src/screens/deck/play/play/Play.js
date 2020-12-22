@@ -14,7 +14,6 @@ import HeaderWithBack from '../../../../components/header/HeaderWithBack';
 import PlayCard from './PlayCard';
 import PlayCounter from './PlayCounter';
 import PlayButtons from './PlayButtons';
-import PlayResults from './PlayResults';
 
 import { DeckGeneral, DeckContent } from '../../../../../dev/TestData';
 
@@ -31,17 +30,16 @@ class Swiper extends Component {
     this.card = {};
     this.state = {
       layout: { height: 0, width: 0 },
-      deckG: {},
+      deckG: { thumbnail: { uri: '' } },
       deckC: [],
       right: [],
       left: [],
-      isFinished: false,
     };
   }
 
   componentDidMount() {
     this.setState({ deckG: DeckGeneral[0] });
-    this.setState({ deckC: DeckContent });
+    this.setState({ deckC: DeckContent[1] });
   }
 
   onSwipedRight = (index) => {
@@ -69,19 +67,19 @@ class Swiper extends Component {
   };
 
   onSwipedAll = () => {
-    const { right } = this.state;
-    const { left } = this.state;
-    // this.setState((prev) => ({ isFinished: !prev.isFinished }));
-    this.setState({ isFinished: true });
-    alert(`Yup: ${right}`);
-    alert(`Nopes: ${left}`);
+    const { right, left, deckG: { thumbnail: { uri } } } = this.state;
+    const { navigation } = this.props;
+    navigation.navigate('results', { right, left, uri });
   };
 
   renderHeader = () => {
     const { deckG: { title } } = this.state;
     const { navigation } = this.props;
     return (
-      <HeaderWithBack navigation={navigation} title={title} />
+      <HeaderWithBack
+        navigation={navigation}
+        title={title}
+      />
     );
   }
 
@@ -123,32 +121,14 @@ class Swiper extends Component {
     );
   }
 
-  renderButtons = () => {
-    const { isFinished } = this.state;
-    if (!isFinished) {
-      return (
-        <PlayButtons
-          flip={() => this.card.flip()}
-          swipeLeft={() => this.swiper.swipeLeft()}
-          swipeRight={() => this.swiper.swipeRight()}
-          swipeBack={() => this.onPressedBack()}
-        />
-      );
-    }
-    return null;
-  };
-
-  renderResults = () => {
-    const { isFinished, left, right } = this.state;
-    if (isFinished) {
-      return (
-        <View style={[StyleSheet.absoluteFill, { backgroundColor: Color.defaultBackground }]}>
-          <PlayResults left={left} right={right} />
-        </View>
-      );
-    }
-    return null;
-  }
+  renderButtons = () => (
+    <PlayButtons
+      flip={() => this.card.flip()}
+      swipeLeft={() => this.swiper.swipeLeft()}
+      swipeRight={() => this.swiper.swipeRight()}
+      swipeBack={() => this.onPressedBack()}
+    />
+  );
 
   render() {
     return (
@@ -163,7 +143,6 @@ class Swiper extends Component {
           </View>
           {this.renderCounter()}
           {this.renderButtons()}
-          {this.renderResults()}
         </View>
       </View>
     );

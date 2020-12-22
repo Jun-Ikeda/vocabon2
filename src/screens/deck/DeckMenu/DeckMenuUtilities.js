@@ -14,7 +14,7 @@ class DeckMenuUtilities extends Component {
   render() {
     const { language, title, user } = this.props;
     return (
-      <View style={{ backgroundColor: Color.white1 }}>
+      <View style={{ backgroundColor: Color.white1, paddingVertical: 10 }}>
         <View>
           <Text style={{
             fontSize: titleFontSize,

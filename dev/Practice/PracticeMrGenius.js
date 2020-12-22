@@ -1,36 +1,26 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
+// import PlayResults from '../../src/screens/deck/play/play/PlayResults';
 
 import Header from '../../src/components/header/Header';
+// import PlayResults from 
 
 class IH extends Component {
-  gotoIwasaki = () => {
+
+  constructor(props) {
+    this.state = {
+      deckG: { thumbnail: { uri: 'https://spring-js.com/wp-content/uploads/2017/06/01-1.jpg'}}
+    }
+  }
+
+  renderTestScreen = () => {
+    const {right, left, deckG: { thumbnail: { uri }}} = this.state;
     const { navigation } = this.props;
-    navigation.navigate('iwasaki');
+    navigation.navigate('results', {right, left, uri });
   };
-
-  bossBaby = () => (
-    <View>
-      <Text>i worship BOSS!</Text>
-    </View>
-  )
-
   render() {
-    return (
-      <View>
-        <Header renderTitle={() => <Text>Title</Text>} />
-        <Text>d( ^ω^ #)b</Text>
-        <TouchableOpacity onPress={this.gotoIwasaki}>
-          <Text>岩崎慎平に行こう</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.bossBaby}>
-          <Text>
-            "bossbaby" is under Disney's trademark registration
-          </Text>
-        </TouchableOpacity>
-      </View>
-    );
+    return (0);
   }
 }
 

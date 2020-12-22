@@ -156,7 +156,7 @@ class CreateDeck extends Component {
           navigation={navigation}
         />
         <View style={style.containers}>
-          <Text>Decide the name and select languages</Text>
+          {/* <Text >Decide the name and select languages</Text> */}
           {this.renderItems()}
           {this.renderOK()}
         </View>

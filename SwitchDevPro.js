@@ -15,6 +15,7 @@ import Play from './src/screens/deck/play/play/Play';
 import Property from './src/screens/deck/property/Property';
 import Edit from './src/screens/deck/edit/Edit';
 import PlayOption from './src/screens/deck/play/playoption/PlayOption';
+import PracticeIW from './dev/Practice/PracticeIW';
 // import Account from './src/nav/main/setting/screens/settingitems/Account';
 
 const style = StyleSheet.create({

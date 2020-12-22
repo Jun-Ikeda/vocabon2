@@ -1,9 +1,22 @@
+/* eslint-disable max-classes-per-file */
 import React, { Component } from 'react';
 import {
   View, Text, StyleSheet, TouchableOpacity,
 } from 'react-native';
 
 import Header from '../../src/components/header/Header';
+
+class TestComponent extends Component {
+  render() {
+    const { name } = this.props;
+    return (
+      <Text>
+        I am
+        {name}
+      </Text>
+    );
+  }
+}
 
 const style = StyleSheet.create({
   container: {
@@ -71,14 +84,24 @@ class PracticeIW extends Component {
     render() {
       return (
         <View style={style.container}>
-          <Header renderTitle={() => {
-            return <Text>AOnyuusiderakusitai</Text>
-          }} >
-          </Header>
+          <Header renderTitle={() => <Text>AOnyuusiderakusitai</Text>} />
+          <TestComponent name="Iwasaki" />
+          <TestComponent name="Iwashi" />
+          <TestComponent name="Shimpei" />
+          <TestComponent name="Kokoro" />
+          <TestComponent name="Iwamura" />
           {this.renderButton()}
         </View>
       );
     }
 }
+
+/*
+I am Iwasaki
+I am Iwashi
+I am Shimpei
+I am Kokoro
+I am Iwamura
+*/
 
 export default PracticeIW;

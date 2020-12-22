@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import {
   View, StyleSheet, TouchableOpacity, Text, Image,
 } from 'react-native';
-import { Provider } from 'react-native-paper';
+import { Provider, List } from 'react-native-paper';
 import { Button, Card, CheckBox } from 'react-native-elements';
 import CardFlip from 'react-native-card-flip';
 
 import Header from '../src/components/header/Header';
 import Icon from '../src/components/Icon';
-import TempComponent from '../src/components/TempComponent';
+// import TempComponent from '../src/components/TempComponent';
 import Item from '../src/components/item/Item';
 import ItemWithIcon from '../src/components/item/ItemWithIcon';
 import ItemWithDescription from '../src/components/item/ItemWithDescription';
@@ -34,6 +34,16 @@ const style = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'red',
   },
+  list: {
+    backgroundColor: 'red',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  listItem: {
+    backgroundColor: 'red',
+    borderBottomRightRadius:10,
+    borderBottomLeftRadius:10,
+  },
 });
 
 class Demo extends Component {
@@ -42,6 +52,7 @@ class Demo extends Component {
     this.state = {
       menuVisible: false,
       isChecked: false,
+      expandedIndexes: [],
     };
   }
 
@@ -99,7 +110,7 @@ class Demo extends Component {
 
   renderUserIcon = () => (
     <UserIcon
-      user={{ name: 'Vocabon', background: '#53A1B3' }}
+      user={{ name: 'Vocabon', background: '#53A1B3s' }}
       size={52}
     />
   )
@@ -166,15 +177,58 @@ class Demo extends Component {
   )
 
   renderCardFlip = () => (
-    <CardFlip style={style.cardContainer} ref={(card) => this.card = card}>
-      <TouchableOpacity style={style.card} onPress={() => this.card.flip()}>
-        <Text>AB</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={style.card} onPress={() => this.card.flip()}>
-        <Text>CD</Text>
-      </TouchableOpacity>
-    </CardFlip>
+    <View>
+      <CardFlip style={style.cardContainer} ref={(card) => this.card = card}>
+        <TouchableOpacity style={style.card} onPress={() => this.card.flip()}>
+          <Text>AB</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={style.card} onPress={() => this.card.flip()}>
+          <Text>CD</Text>
+        </TouchableOpacity>
+      </CardFlip>
+    </View>
   )
+
+  renderListTest = () => {
+    const { expandedIndexes } = this.state;
+    const contents = [
+      { term: 'aa', definition: 'bb' },
+      { term: 'cc', definition: 'dd' },
+      { term: 'ee', definition: 'ff' },
+      { term: 'gg', definition: 'hh' },
+    ];
+
+    return contents.map((item, index) => {
+      const toggleExpand = () => {
+        let newExpandedIndexes = [];
+        if (expandedIndexes.includes(index)) {
+          newExpandedIndexes = expandedIndexes.filter((_index) => _index !== index);
+        } else {
+          expandedIndexes.push(index);
+          newExpandedIndexes = expandedIndexes;
+        }
+        this.setState({ expandedIndexes: newExpandedIndexes });
+      };
+      return (
+        <List.Accordion
+          expand={expandedIndexes.includes(index)}
+          onPress={toggleExpand}
+          title={`${item.term}, ${item.definition}`}
+          description={item.definition}
+          left={(props) => <List.Icon {...props} icon="folder" />}
+          style={[
+            style.list,
+            {
+              borderBottomLeftRadius: expandedIndexes.includes(index) ? 0 : 10,
+              borderBottomRightRadius: expandedIndexes.includes(index) ? 0 : 10,
+            }]}
+        >
+          <List.Item title="First item" style={style.listItem} />
+          <List.Item style={style.listItem}><Text>ffgfgg</Text></List.Item>
+        </List.Accordion>
+      );
+    });
+  }
 
   render() {
     return (
@@ -190,7 +244,8 @@ class Demo extends Component {
           {/* {this.renderMenu()} */}
           {/* {this.renderPaper()} */}
           {/* {this.renderElements()} */}
-          {this.renderCardFlip()}
+          {/* {this.renderCardFlip()} */}
+          {this.renderListTest()}
         </View>
       </Provider>
     );

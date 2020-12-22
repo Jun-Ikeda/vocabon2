@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+
+import Color from '../../config/Color';
+
 import Header from './Header';
 
 const style = StyleSheet.create({
+  header: {
+    backgroundColor: Color.defaultBackground,
+  },
   headerContainer: {
     flex: 1,
-    paddingLeft: 24,
+    paddingLeft: 36,
     justifyContent: 'center',
   },
   headerTitle: {
-    fontSize: 20,
+    fontSize: 26,
   },
 });
 
@@ -35,7 +41,7 @@ class HeaderInMain extends Component {
 
   render() {
     return (
-      <Header medium renderAll={this.renderAll} />
+      <Header medium renderAll={this.renderAll} style={style.header} />
     );
   }
 }

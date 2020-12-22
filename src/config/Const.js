@@ -8,15 +8,16 @@ export const header = {
     switch (Platform.OS) {
       case 'android':
         return 24;
+        // return 0
       case 'ios':
         return 18;
       default:
         return 0;
     }
   },
-  heightMax: 96,
-  heightMid: 72,
-  heightMin: 48,
+  heightMax: 120,
+  heightMid: 86,
+  heightMin: 60,
 };
 
 const carousel = {

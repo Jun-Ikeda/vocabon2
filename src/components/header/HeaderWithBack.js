@@ -2,15 +2,20 @@ import React, { Component } from 'react';
 import { Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
+import Color from '../../config/Color';
+
 import Header from './Header';
 import Icon from '../Icon';
 // import Color from '../../config/Color';
 
 const style = StyleSheet.create({
   headerIcon: {
-    fontSize: 21,
+    fontSize: 28,
+    color: Color.white1,
   },
-  title: {},
+  title: {
+    color: Color.white1, fontSize: 22, alignSelf: 'flex-start', paddingHorizontal: 25,
+  },
 });
 
 /**
@@ -68,7 +73,7 @@ class HeaderWithBack extends Component {
         renderLeft={() => (
           <Icon.Ionicons
             name="ios-arrow-back"
-            style={[headerStyle.headerIcon, iconStyle, style.headerIcon]}
+            style={[headerStyle.headerIcon, style.headerIcon, iconStyle]}
           />
         )}
         renderTitle={() => this.renderTitle()}
@@ -85,7 +90,6 @@ class HeaderWithBack extends Component {
         onLongPressTitle={onLongPressTitle}
         onPressRight={onPressRight}
         onLongPressRight={onLongPressRight}
-
       />
     );
   }
@@ -110,7 +114,7 @@ HeaderWithBack.propTypes = {
 };
 
 HeaderWithBack.defaultProps = {
-  style: {},
+  style: { backgroundColor: Color.green3 },
   renderRight: () => { },
   renderAll: () => { throw new Error('the function is null'); },
   large: false,
@@ -121,9 +125,9 @@ HeaderWithBack.defaultProps = {
   onPressRight: () => { },
   onLongPressRight: () => { },
   renderCenter: () => { throw new Error('the function is null'); },
-  titleStyle: {},
+  titleStyle: { },
   title: '',
-  iconStyle: {},
+  iconStyle: { },
 };
 
 export default HeaderWithBack;

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { header } from '../../config/Const';
+import Color from '../../config/Color';
 
 const style = StyleSheet.create({
   container: {
@@ -12,6 +13,7 @@ const style = StyleSheet.create({
   },
   padding: {
     paddingTop: header.paddingTopByOS(),
+    // backgroundColor: Color.green2
   },
   headerContainer: {
     flexDirection: 'row',
@@ -149,7 +151,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  style: {},
+  style: { backgroundColor: Color.green3 },
   renderLeft: () => { },
   renderTitle: () => { },
   renderRight: () => { },
