@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import Icon from '../../../components/Icon';
+import Icon from '../../../../components/Icon';
 
 const style = StyleSheet.create({
   container: { flexDirection: 'row', justifyContent: 'space-around' },

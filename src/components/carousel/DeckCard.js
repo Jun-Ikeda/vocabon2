@@ -98,7 +98,7 @@ class DeckCard extends Component {
           {deck.title}
         </Text>
         <Text style={{
-          font: cardStyle.height * 0.08,
+          fontSize: cardStyle.height * 0.08,
           color: Color.gray1,
         }}
         >

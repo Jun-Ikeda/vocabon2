@@ -4,12 +4,25 @@ import {
 } from 'react-native';
 
 import Icon from '../../../components/Icon';
+import Color from '../../../config/Color';
 
+const iconsize = 30;
 const style = StyleSheet.create({
   container: {
-    flex: 1,
+    flexDirection: 'row',
   },
   icon: {
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    borderRadius: iconsize / 3,
+    // borderwidth: 1,
+    // borderBottomColor: Color.gray1,
+    // borderRightColor: Color.gray1,
+    backgroundColor: Color.white1,
+    margin: 3,
   },
 });
 
@@ -17,22 +30,39 @@ export default class DeckMenuButtons extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      visible: false,
+      bookmarked: false,
     };
   }
 
-  render = () => {
-    const iconsize = 30;
+  renderColumn = (buttons) => (
+    <View style={style.container}>
+      {buttons.map((button) => (
+        <TouchableOpacity
+          style={[style.button]}
+          onPress={button.onPress}
+        >
+          {button.icon()}
+          <Text style={[style.title, button.textStyle]}>{button.title}</Text>
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
+
+  renderMainButtons = () => {
+    const { visible } = this.state;
+    const { navigation } = this.props;
     const buttons = [
       {
         title: 'Play',
         icon: () => <Icon.Feather name="play" size={iconsize} style={style.icon} />,
-        onPress: () => alert('play'),
+        onPress: () => navigation.navigate('play'),
         textStyle: {},
       },
       {
         title: 'Property',
         icon: () => <Icon.Ionicons name="md-list" size={iconsize} style={style.icon} />,
-        onPress: () => alert('property'),
+        onPress: () => navigation.navigate('property'),
         textStyle: {},
       },
       {
@@ -41,27 +71,48 @@ export default class DeckMenuButtons extends Component {
         onPress: () => alert('edit'),
         textStyle: {},
       },
-      // {
-      //   title: isAdditionalButtonsVisible ? 'Close' : 'More',
-      //   icon: () => (
-      //     <Icon.Feather
-      //       name={isAdditionalButtonsVisible ? 'chevron-up' : 'chevron-down'}
-      //       style={style.icon}
-      //       size={iconsize}
-      //     />
-      //   ),
-      //   onPress: () => {
-      //     this.setState((prev) => ({
-      //       isAdditionalButtonsVisible: !prev.isAdditionalButtonsVisible,
-      //     }));
-      //     alert(isAdditionalButtonsVisible ? 'Close' : 'More'),
-      //   },
-      //   textStyle: {},
-      // },
+      {
+        title: visible ? 'Close' : 'More',
+        icon: () => (
+          <Icon.Feather
+            name={visible ? 'chevron-up' : 'chevron-down'}
+            style={style.icon}
+            size={iconsize}
+          />
+        ),
+        onPress: () => {
+          this.setState((prev) => ({
+            visible: !prev.visible,
+          }));
+          // alert(visible)
+          // alert(visible ? 'Close' : 'More');
+        },
+        textStyle: {},
+      },
+    ];
+    return this.renderColumn(buttons);
+  };
+
+  renderMoreButtons = () => {
+    const { visible } = this.state;
+    const { bookmarked } = this.state;
+    const buttons1 = [
       {
         title: 'Bookmark',
-        icon: () => <Icon.Feather name="bookmark" size={iconsize} style={style.icon} />,
-        onPress: () => alert('bookmark'),
+        icon: () => (
+          <Icon.FontAwesome
+            name={bookmarked ? 'bookmark' : 'bookmark-o'}
+            style={style.icon}
+            size={iconsize}
+          />
+        ),
+        onPress: () => {
+          this.setState((prev) => ({
+            bookmarked: !prev.bookmarked,
+          }));
+          // alert(bookmarked)
+          alert(bookmarked ? 'canceled' : 'registed');
+        },
         textStyle: {},
       },
       {
@@ -82,6 +133,8 @@ export default class DeckMenuButtons extends Component {
         onPress: () => alert('duplicate'),
         textStyle: {},
       },
+    ];
+    const buttons2 = [
       {
         title: 'Share',
         icon: () => <Icon.Entypo name="share" size={iconsize} style={style.icon} />,
@@ -102,35 +155,28 @@ export default class DeckMenuButtons extends Component {
       },
       {
         title: 'Delete',
-        icon: () => <Icon.FontAwesome name="trash" size={iconsize} style={style.deleteicon} />,
+        icon: () => <Icon.FontAwesome name="trash" size={iconsize} style={[style.icon, { color: Color.cud.pink }]} />,
         onPress: () => alert('delete'),
-        textStyle: { color: 'red' },
+        textStyle: { color: Color.cud.pink },
       },
     ];
+    if (visible) {
+      return (
+        <View>
+          {this.renderColumn(buttons1)}
+          {this.renderColumn(buttons2)}
+        </View>
+      );
+    }
+    return null;
+  }
 
+  render() {
     return (
-      <View style={style.container}>
-        {buttons.map((button) => (
-          <TouchableOpacity onPress={button.onPress} style={{ width: 100, height: 60, borderWidth: 1}} key={button.title.toLowerCase()}>
-            {button.icon()}
-            <Text style={button.textStyle} fontsize={10}>
-              {button.title}
-            </Text>
-          </TouchableOpacity>
-        ))}
+      <View>
+        {this.renderMainButtons()}
+        {this.renderMoreButtons()}
       </View>
     );
   }
-
-  // render() {
-  //   return (
-  //     <View>
-  //       {/* {buttons.map(
-  //         <View>
-  //           {button.onPress}
-  //         </View>,
-  //       )} */}
-  //     </View>
-  //   );
-  // }
 }

@@ -4,7 +4,8 @@ import CardFlip from 'react-native-card-flip';
 import PropTypes from 'prop-types';
 // import HTML from 'react-native-render-html';
 
-import Color from '../../../config/Color';
+import Color from '../../../../config/Color';
+import { play } from '../../../../config/Const';
 
 const style = StyleSheet.create({
   cardflip: {
@@ -13,12 +14,13 @@ const style = StyleSheet.create({
   card: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    // alignItems: 'center',
     backgroundColor: Color.white1,
   },
   label: {
     color: Color.font1,
     fontSize: 22,
+    textAlign: 'left',
   },
 });
 
@@ -29,21 +31,20 @@ class PlayCard extends Component {
   }
 
   flip = () => {
-    const { term } = this.props;
-    this[`card${term}`].flip();
+    // const { term } = this.props;
+    // this[`card${term}`].flip();
+    this.card.flip();
   };
 
   render() {
     const {
-      term, content,
+      content,
     } = this.props;
     return (
       <CardFlip
         style={style.cardflip}
         duration={300}
-        ref={(cardRef) => {
-          this[`card${term}`] = cardRef;
-        }}
+        ref={(card) => { this.card = card; }}
       >
         <TouchableOpacity
           style={[style.card]}
@@ -55,7 +56,10 @@ class PlayCard extends Component {
           style={[style.card]}
           onPress={() => this.flip()}
         >
-          <Text style={style.label}>{content.definition}</Text>
+          <Text style={style.label}>{`${play.formatArrayContent(content.definition)}\n`}</Text>
+          <Text style={style.label}>{`Synonym: ${play.formatArrayContent(content.synonym)}`}</Text>
+          <Text style={style.label}>{`Antonym: ${play.formatArrayContent(content.antonym)}`}</Text>
+          {/* <Text style={style.label}>{`Ex: ${play.formatArrayContent(content.example)}`}</Text> */}
         </TouchableOpacity>
       </CardFlip>
     );

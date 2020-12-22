@@ -39,5 +39,6 @@ module.exports = {
     'no-empty-pattern': ['warn'],
     'arrow-body-style': ['warn'],
     'implicit-arrow-linebreak': ['off'],
+    'no-alert': ['off'],
   },
 };

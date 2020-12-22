@@ -34,10 +34,11 @@ class Property extends Component {
 
   render() {
     const { title, language } = this.state;
+    const { navigation } = this.props;
 
     return (
       <View>
-        <HeaderWithBack title="Property" />
+        <HeaderWithBack title="Property" navigation={navigation} />
 
         <View style={style.itemContainer}>
           <View style={style.itemTitleBox}>

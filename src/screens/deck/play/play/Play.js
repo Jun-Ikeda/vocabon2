@@ -6,16 +6,17 @@ import {
 import PropTypes from 'prop-types';
 import DeckSwiper from 'react-native-deck-swiper';
 
-import { func } from '../../../config/Const';
-import Color from '../../../config/Color';
+import { func } from '../../../../config/Const';
+import Color from '../../../../config/Color';
 
-import HeaderWithBack from '../../../components/header/HeaderWithBack';
+import HeaderWithBack from '../../../../components/header/HeaderWithBack';
 
 import PlayCard from './PlayCard';
 import PlayCounter from './PlayCounter';
 import PlayButtons from './PlayButtons';
+import PlayResults from './PlayResults';
 
-import { DeckGeneral, DeckContent } from '../../../../dev/TestData';
+import { DeckGeneral, DeckContent } from '../../../../../dev/TestData';
 
 const style = StyleSheet.create({
   container: {
@@ -72,8 +73,8 @@ class Swiper extends Component {
     const { left } = this.state;
     // this.setState((prev) => ({ isFinished: !prev.isFinished }));
     this.setState({ isFinished: true });
-    alert(`Yup:${right}`);
-    alert(`Nopes:${left}`);
+    alert(`Yup: ${right}`);
+    alert(`Nopes: ${left}`);
   };
 
   renderHeader = () => {
@@ -93,9 +94,7 @@ class Swiper extends Component {
           renderCard={(content) => (
             <PlayCard
               content={content}
-              ref={(ref) => {
-                this.card = ref;
-              }}
+              ref={(ref) => { this.card = ref; }}
             />
           )}
           onSwipedRight={this.onSwipedRight}
@@ -106,9 +105,7 @@ class Swiper extends Component {
           horizontalThreshold={width / 8}
           cardIndex={0}
           backgroundColor={Color.defaultBackground}
-          ref={(ref) => {
-            this.swiper = ref;
-          }}
+          ref={(ref) => { this.swiper = ref; }}
           stackSize={1}
           cardVerticalMargin={20}
           useViewOverflow={false}
@@ -141,18 +138,33 @@ class Swiper extends Component {
     return null;
   };
 
+  renderResults = () => {
+    const { isFinished, left, right } = this.state;
+    if (isFinished) {
+      return (
+        <View style={[StyleSheet.absoluteFill, { backgroundColor: Color.defaultBackground }]}>
+          <PlayResults left={left} right={right} />
+        </View>
+      );
+    }
+    return null;
+  }
+
   render() {
     return (
       <View style={style.container}>
         {this.renderHeader()}
-        <View
-          style={style.container}
-          onLayout={(e) => this.setState({ layout: func.onLayoutContainer(e) })}
-        >
-          {this.renderSwiper()}
+        <View style={{ flex: 1 }}>
+          <View
+            style={style.container}
+            onLayout={(e) => this.setState({ layout: func.onLayoutContainer(e) })}
+          >
+            {this.renderSwiper()}
+          </View>
+          {this.renderCounter()}
+          {this.renderButtons()}
+          {this.renderResults()}
         </View>
-        {this.renderCounter()}
-        {this.renderButtons()}
       </View>
     );
   }

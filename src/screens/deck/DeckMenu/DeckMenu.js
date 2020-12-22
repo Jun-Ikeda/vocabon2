@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 import { DeckGeneral } from '../../../../dev/TestData';
 
 import HeaderWithBack from '../../../components/header/HeaderWithBack';
-import Background from '../../../components/Background';
 
 import Unsplash from '../../../config/Unsplash';
 import { func } from '../../../config/Const';
@@ -19,8 +18,8 @@ import DeckMenuButtons from './DeckMenuButtons';
 import DeckMenuUtilities from './DeckMenuUtilities';
 
 const imgHeight = 200;
-const normalFontSize = 15;
-const wideIndent = 20;
+// const normalFontSize = 15;
+// const wideIndent = 20;
 
 const style = StyleSheet.create({
   container: {
@@ -36,6 +35,9 @@ const style = StyleSheet.create({
     left: 0,
     top: 0,
     bottom: 0,
+  },
+  buttonContainer: {
+    paddingTop: 5,
   },
 });
 
@@ -97,26 +99,6 @@ class DeckMenu extends Component {
     );
   }
 
-  renderAttribution = () => {
-    const { deck: { thumbnail: { user } } } = this.state;
-    return (
-      <TouchableOpacity
-        onPress={() => Linking.openURL(user.link)}
-        style={{
-          fontSize: normalFontSize,
-          paddingLeft: wideIndent,
-        }}
-      >
-        <Text style={{
-          color: Color.gray2,
-        }}
-        >
-          {`\nPhoto by ${user.name} in Unsplash`}
-        </Text>
-      </TouchableOpacity>
-    );
-  }
-
   renderThumbnail = () => {
     const { deck: { thumbnail: { uri } } } = this.state;
     return (
@@ -131,15 +113,20 @@ class DeckMenu extends Component {
   }
 
   renderContent = () => {
-    const { deck: { title, language } } = this.state;
+    const { deck: { title, language, thumbnail: { user } } } = this.state;
     return (
-      <DeckMenuUtilities title={title} language={language} />
+      <DeckMenuUtilities title={title} language={language} user={user} />
     );
   }
 
-  renderButtons = () => (
-    <DeckMenuButtons />
-  );
+  renderButtons = () => {
+    const { navigation } = this.props;
+    return (
+      <View style={style.buttonContainer}>
+        <DeckMenuButtons navigation={navigation} />
+      </View>
+    );
+  };
 
   render() {
     return (
@@ -150,7 +137,6 @@ class DeckMenu extends Component {
         {this.renderThumbnail()}
         {this.renderHeader()}
         {this.renderContent()}
-        {this.renderAttribution()}
         {this.renderButtons()}
       </View>
     );

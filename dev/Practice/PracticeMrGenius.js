@@ -24,7 +24,11 @@ class IH extends Component {
         <TouchableOpacity onPress={this.gotoIwasaki}>
           <Text>岩崎慎平に行こう</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={this.bossBaby} />
+        <TouchableOpacity onPress={this.bossBaby}>
+          <Text>
+            "bossbaby" is under Disney's trademark registration
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }

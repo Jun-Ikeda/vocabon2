@@ -11,8 +11,10 @@ import Template from './dev/Template';
 import Setting from './src/nav/main/setting/screens/Setting';
 import CreateDeck from './src/nav/main/home/screens/createdeck/CreateDeck';
 import Practice from './dev/Practice/PracticeNavigator';
-import Play from './src/screens/deck/play/Play';
+import Play from './src/screens/deck/play/play/Play';
 import Property from './src/screens/deck/property/Property';
+import Edit from './src/screens/deck/edit/Edit';
+import PlayOption from './src/screens/deck/play/playoption/PlayOption';
 // import Account from './src/nav/main/setting/screens/settingitems/Account';
 
 const style = StyleSheet.create({
@@ -34,12 +36,12 @@ const style = StyleSheet.create({
 const buttons = [
   { title: 'Product', element: <Screen /> },
   { title: 'Demo', element: <Demo /> },
-  { title: 'Ichikawa', element: <Practice /> },
+  { title: 'Suzuki', element: <Edit /> },
   { title: 'Ikeda', element: <Play /> },
+  { title: 'Iwasaki', element: <PlayOption /> },
   { title: 'Okuda', element: <Setting /> },
-  { title: 'Suzuki', element: <CreateDeck /> },
   { title: 'Kochiya', element: <Template /> },
-  { title: 'Iwasaki', element: <Property /> },
+  { title: 'Ichikawa', element: <Practice /> },
 ];
 
 class SwitchDevPro extends Component {

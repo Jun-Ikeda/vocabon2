@@ -43,9 +43,17 @@ export const func = {
 };
 
 export const play = {
+  formatArrayContent: (array) => {
+    let str = '';
+    array.forEach((element) => {
+      str = `${str}${element}, `;
+    });
+    return str.slice(0, -2);
+  },
+};
 
-}
-
-export default { header, carousel, func, play };
+export default {
+  header, carousel, func, play,
+};
 
 export const titleMaxLength = 20;
