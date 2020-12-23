@@ -58,9 +58,8 @@ class PopUpMenu extends Component {
             style={[style.overlay, overlayStyle]}
             onPress={() => setVisible(false)}
             onLayout={onLayout}
-          >
-            {renderMenu()}
-          </TouchableOpacity>
+          />
+          {renderMenu()}
         </View>
       );
     }

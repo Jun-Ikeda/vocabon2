@@ -3,7 +3,7 @@ import {
   View, StyleSheet, TouchableOpacity, Text, Image,
 } from 'react-native';
 import { Provider, List } from 'react-native-paper';
-import { Button, Card, CheckBox } from 'react-native-elements';
+import { Button, Card } from 'react-native-elements';
 import CardFlip from 'react-native-card-flip';
 
 import Header from '../src/components/header/Header';
@@ -12,12 +12,12 @@ import Icon from '../src/components/Icon';
 import Item from '../src/components/item/Item';
 import ItemWithIcon from '../src/components/item/ItemWithIcon';
 import ItemWithDescription from '../src/components/item/ItemWithDescription';
-import Background from '../src/components/Background';
+import Background from '../src/components/image/Background';
 import TextAdjust from '../src/components/TextAdjust';
 import PopUpMenu from '../src/components/menu/PopUpMenu';
 import UserIcon from '../src/components/UserIcon';
 import DeckCarousel from '../src/components/carousel/DeckCarousel';
-import Color from '../src/config/Color';
+// import Color from '../src/config/Color';
 
 const style = StyleSheet.create({
   container: {
@@ -41,8 +41,8 @@ const style = StyleSheet.create({
   },
   listItem: {
     backgroundColor: 'red',
-    borderBottomRightRadius:10,
-    borderBottomLeftRadius:10,
+    borderBottomRightRadius: 10,
+    borderBottomLeftRadius: 10,
   },
 });
 
@@ -50,8 +50,8 @@ class Demo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menuVisible: false,
-      isChecked: false,
+      menuVisible: true,
+      // isChecked: false,
       expandedIndexes: [],
     };
   }
@@ -94,17 +94,22 @@ class Demo extends Component {
     <Icon.Ionicons name="ios-arrow-back" />
   )
 
-  renderTempComponent = () => (
-    <TempComponent />
-  )
+  // renderTempComponent = () => (
+  //    <TempComponent />
+  // )
 
   renderMenu = () => {
     const { menuVisible } = this.state;
     return (
-      <PopUpMenu
-        isVisible={menuVisible}
-        setVisible={(bool) => this.setState({ menuVisible: bool })}
-      />
+      <View style={{ flex: 1 }}>
+        <TouchableOpacity onPress={() => this.setState({ menuVisible: true })}>
+          <Text>Show Menu</Text>
+        </TouchableOpacity>
+        <PopUpMenu
+          isVisible={menuVisible}
+          setVisible={(bool) => this.setState({ menuVisible: bool })}
+        />
+      </View>
     );
   }
 
@@ -178,7 +183,7 @@ class Demo extends Component {
 
   renderCardFlip = () => (
     <View>
-      <CardFlip style={style.cardContainer} ref={(card) => this.card = card}>
+      <CardFlip style={style.cardContainer} ref={(card) => { this.card = card; }}>
         <TouchableOpacity style={style.card} onPress={() => this.card.flip()}>
           <Text>AB</Text>
         </TouchableOpacity>
@@ -241,11 +246,11 @@ class Demo extends Component {
           {/* {this.renderTextAdjust()} */}
           {/* {this.renderUserIcon()} */}
           {/* {this.renderCarousel()} */}
-          {/* {this.renderMenu()} */}
+          {this.renderMenu()}
           {/* {this.renderPaper()} */}
           {/* {this.renderElements()} */}
           {/* {this.renderCardFlip()} */}
-          {this.renderListTest()}
+          {/* {this.renderListTest()} */}
         </View>
       </Provider>
     );

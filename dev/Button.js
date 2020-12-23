@@ -1,4 +1,4 @@
-import { Dimensions, Platform } from 'react-native';
+import { /* Dimensions,  */Platform } from 'react-native';
 import Unsplash from '../src/config/Unsplash';
 import UUID from '../src/config/UUID';
 

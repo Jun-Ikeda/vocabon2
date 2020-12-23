@@ -30,7 +30,9 @@ class PlayButtons extends Component {
   }
 
   renderThreeButtons = () => {
-    const { flip, swipeLeft, swipeRight } = this.props;
+    const {
+      flip, swipeLeft, swipeRight, finished,
+    } = this.props;
     const buttons = [
       {
         collection: 'Entypo',
@@ -48,7 +50,10 @@ class PlayButtons extends Component {
         onPress: () => swipeRight(),
       },
     ];
-    return buttons.map(this.renderButton);
+    if (!(finished)) {
+      return buttons.map(this.renderButton);
+    }
+    return null;
   }
 
   renderBackButton = () => {

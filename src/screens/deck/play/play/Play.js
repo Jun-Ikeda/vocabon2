@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import {
   View,
   StyleSheet,
+  // TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import DeckSwiper from 'react-native-deck-swiper';
 
+import { Button } from 'react-native-paper';
 import { func } from '../../../../config/Const';
 import Color from '../../../../config/Color';
 
@@ -54,7 +56,7 @@ class Swiper extends Component {
     this.setState({ left });
   };
 
-  onPressedBack = () => {
+  swipeBack = () => {
     this.swiper.swipeBack(this.swiper.previousCardIndex);
     const { right, left } = this.state;
     const rightNew = right.filter(
@@ -66,11 +68,11 @@ class Swiper extends Component {
     this.setState({ right: rightNew, left: leftNew });
   };
 
-  onSwipedAll = () => {
-    const { right, left, deckG: { thumbnail: { uri } } } = this.state;
-    const { navigation } = this.props;
-    navigation.navigate('results', { right, left, uri });
-  };
+  // onSwipedAll = () => {
+  //   const { right, left, deckG: { thumbnail: { uri } } } = this.state;
+  //   const { navigation } = this.props;
+  //   navigation.navigate('results', { right, left, uri });
+  // };
 
   renderHeader = () => {
     const { deckG: { title } } = this.state;
@@ -99,10 +101,9 @@ class Swiper extends Component {
           onSwipedLeft={this.onSwipedLeft}
           disableTopSwipe
           disableBottomSwipe
-          onSwipedAll={this.onSwipedAll}
           horizontalThreshold={width / 8}
           cardIndex={0}
-          backgroundColor={Color.defaultBackground}
+          backgroundColor="transparent"
           ref={(ref) => { this.swiper = ref; }}
           stackSize={1}
           cardVerticalMargin={20}
@@ -114,6 +115,24 @@ class Swiper extends Component {
     return null;
   };
 
+  renderFinishButton = () => {
+    const {
+      deckC, right, left, deckG: { thumbnail: { uri } },
+    } = this.state;
+    const { navigation } = this.props;
+    const finish = (deckC.length === right.length + left.length);
+    if (finish) {
+      return (
+        <View style={[StyleSheet.absoluteFill, { right: 20, left: 20, justifyContent: 'center' }]}>
+          <Button color={Color.green3} mode="contained" onPress={() => navigation.push('results', { right, left, uri })}>
+            Show Results
+          </Button>
+        </View>
+      );
+    }
+    return null;
+  }
+
   renderCounter= () => {
     const { left, right } = this.state;
     return (
@@ -121,14 +140,18 @@ class Swiper extends Component {
     );
   }
 
-  renderButtons = () => (
-    <PlayButtons
-      flip={() => this.card.flip()}
-      swipeLeft={() => this.swiper.swipeLeft()}
-      swipeRight={() => this.swiper.swipeRight()}
-      swipeBack={() => this.onPressedBack()}
-    />
-  );
+  renderButtons = () => {
+    const { deckC, left, right } = this.state;
+    return (
+      <PlayButtons
+        flip={() => this.card.flip()}
+        finished={deckC.length === left.length + right.length}
+        swipeLeft={() => this.swiper.swipeLeft()}
+        swipeRight={() => this.swiper.swipeRight()}
+        swipeBack={() => this.swipeBack()}
+      />
+    );
+  };
 
   render() {
     return (
@@ -140,6 +163,7 @@ class Swiper extends Component {
             onLayout={(e) => this.setState({ layout: func.onLayoutContainer(e) })}
           >
             {this.renderSwiper()}
+            {this.renderFinishButton()}
           </View>
           {this.renderCounter()}
           {this.renderButtons()}

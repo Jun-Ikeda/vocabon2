@@ -6,6 +6,13 @@ import { List } from 'react-native-paper';
 
 import { DeckContent } from '../../../../dev/TestData';
 import HeaderWithBack from '../../../components/header/HeaderWithBack';
+import { deck } from '../../../config/Const';
+import PopUpMenu from '../../../components/menu/PopUpMenu';
+import Color from '../../../config/Color';
+import Icon from '../../../components/Icon';
+
+const backgroundColor = Color.cud.pGreen1;
+const iconSize = 20;
 
 const style = StyleSheet.create({
   container: {
@@ -16,38 +23,57 @@ const style = StyleSheet.create({
   },
   box: {
     flex: 1,
-  //   backgroundColor: 'red',
-    // height: 100,
     marginHorizontal: 20,
     marginVertical: 10,
-    paddingHorizontal: 15,
-    paddingVertical: 4,
-  //   borderRadius: 10,
+    borderWidth: 0,
   },
   termanddef: {
-    // backgroundColor: 'blue',
     marginVertical: 1,
     fontSize: 18,
     fontWeight: 'bold',
     color: 'black',
   },
-  item: {
-    // alignItems: 'center',
-    // backgroundColor: 'blue',
-    marginVertical: 1,
-    fontSize: 12,
-    color: 'black',
-  },
   list: {
-    backgroundColor: 'red',
+    backgroundColor,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
   listItem: {
-    backgroundColor: 'red',
-    borderBottomRightRadius:10,
-    borderBottomLeftRadius:10,
-    height:100,
+    backgroundColor,
+    paddingVertical: 0,
+  },
+  listItemLast: {
+    backgroundColor,
+    borderBottomRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    paddingTop: 0,
+    paddingBottom: 10,
+  },
+  overlayStyle: {
+    // opacity: 0.8,
+    backgroundColor: Color.gray1,
+    opacity: 0.5,
+    color: Color.white3,
+    flex: 1,
+  },
+  menu: {
+    position: 'absolute',
+    right: 100,
+    left: 100,
+    top: 100,
+    bottom: 100,
+    backgroundColor: Color.black,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  defaultMenuText: {
+    color: Color.white3,
+    fontSize: 20,
+  },
+  editButton: {
+    position: 'absolute',
+    right: 70,
+    top: 30,
   },
 });
 
@@ -57,12 +83,31 @@ export default class Edit extends Component {
     this.state = {
       deckC: [],
       expandedIndexes: [],
+      editVisible: true,
     };
   }
 
   componentDidMount() {
     this.setState({ deckC: DeckContent[0] });
   }
+
+  renderPopUp = () => {
+    const { editVisible } = this.state;
+    return (
+      <PopUpMenu
+        isVisible={editVisible}
+        setVisible={(bool) => this.setState({ editVisible: bool })}
+        renderMenu={this.renderMenu}
+        overlayStyle={style.overlayStyle}
+      />
+    );
+  }
+
+  renderMenu = () => (
+    <View style={style.menu}>
+      <Text style={style.defaultMenuText}>Pop Up Menu</Text>
+    </View>
+  )
 
   renderMainContents =() => {
     const { deckC, expandedIndexes } = this.state;
@@ -78,46 +123,40 @@ export default class Edit extends Component {
         this.setState({ expandedIndexes: newExpandedIndexes });
       };
       return (
-      <View style={style.box}>
-        <List.Accordion
-          expand={expandedIndexes.includes(index)}
-          onPress={toggleExpand}
-          title={content.term}
-          description={content.definition}
-          // left={(props) => <List.Icon {...props} icon="folder" />}
-          titleStyle={style.termanddef}
-          descriptionStyle={style.termanddef}
-          style={[
-            style.list,
-            {
-              borderBottomLeftRadius: expandedIndexes.includes(index) ? 0 : 10,
-              borderBottomRightRadius: expandedIndexes.includes(index) ? 0 : 10,
-            }]}
-        >
-          <List.Item 
-            style={style.listItem} 
-            title={
-              ` ${content.synonym},
-                \n${content.antonym},
-                \n${content.prefix},
-                \n${content.sufix}
-                \n${content.exampleT}
-                \n${content.exampleD}
-                \n${content.cf}
-              `
-            }
-            >
-            {/* <Text style={style.item}>{content.synonym}</Text>
-            <Text style={style.item}>{content.antonym}</Text>
-            <Text style={style.item}>{content.prefix}</Text>
-            <Text style={style.item}>{content.sufix}</Text>
-            <Text style={style.item}>{content.exampleT}</Text>
-            <Text style={style.item}>{content.exampleD}</Text>
-            <Text style={style.item}>{content.cf}</Text> */}
-          </List.Item>
-        </List.Accordion>
-      </View>
-      )
+        <View style={style.box}>
+          <List.Accordion
+            expand={expandedIndexes.includes(index)}
+            onPress={toggleExpand}
+            title={content.term}
+            description={deck.formatArrayContent(content.definition)}
+            titleStyle={style.termanddef}
+            descriptionStyle={style.termanddef}
+            style={[
+              style.list,
+              {
+                borderBottomLeftRadius: expandedIndexes.includes(index) ? 0 : 10,
+                borderBottomRightRadius: expandedIndexes.includes(index) ? 0 : 10,
+              }]}
+          >
+            <List.Item style={style.listItem} title={`Synonym: ${deck.formatArrayContent(content.synonym)}`} />
+            <List.Item style={style.listItem} title={`Antonym: ${deck.formatArrayContent(content.antonym)}`} />
+            <List.Item style={style.listItem} title={`Prefix: ${deck.formatArrayContent(content.prefix)}`} />
+            <List.Item style={style.listItem} title={`Sufix: ${deck.formatArrayContent(content.sufix)}`} />
+            <List.Item style={style.listItem} title={`ExampleT: ${deck.formatArrayContent(content.exampleT)}`} />
+            <List.Item style={style.listItem} title={`ExampleD: ${deck.formatArrayContent(content.exampleD)}`} />
+            <List.Item style={style.listItemLast} title={`Cf: ${deck.formatArrayContent(content.cf)}`} />
+          </List.Accordion>
+          <TouchableOpacity
+            onPress={() => this.setState({ editVisible: true })}
+            style={style.editButton}
+          >
+            <Icon.Feather
+              name="edit"
+              size={iconSize}
+            />
+          </TouchableOpacity>
+        </View>
+      );
     });
   }
 
@@ -132,7 +171,19 @@ export default class Edit extends Component {
         <ScrollView style={style.containers}>
           {this.renderMainContents()}
         </ScrollView>
+        {this.renderPopUp()}
       </View>
     );
   }
 }
+
+/*
+<View
+  onLayout={e=>{
+    const height = e.nativeEvent.layout.height;
+    const width = e.nativeEvent.layout.width
+  }}
+>
+
+</View>
+*/

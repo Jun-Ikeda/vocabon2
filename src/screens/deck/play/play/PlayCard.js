@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 // import HTML from 'react-native-render-html';
 
 import Color from '../../../../config/Color';
-import { play } from '../../../../config/Const';
+import { deck } from '../../../../config/Const';
 
 const style = StyleSheet.create({
   cardflip: {
@@ -56,9 +56,9 @@ class PlayCard extends Component {
           style={[style.card]}
           onPress={() => this.flip()}
         >
-          <Text style={style.label}>{`${play.formatArrayContent(content.definition)}\n`}</Text>
-          <Text style={style.label}>{`Synonym: ${play.formatArrayContent(content.synonym)}`}</Text>
-          <Text style={style.label}>{`Antonym: ${play.formatArrayContent(content.antonym)}`}</Text>
+          <Text style={style.label}>{`${deck.formatArrayContent(content.definition)}\n`}</Text>
+          <Text style={style.label}>{`Synonym: ${deck.formatArrayContent(content.synonym)}`}</Text>
+          <Text style={style.label}>{`Antonym: ${deck.formatArrayContent(content.antonym)}`}</Text>
           {/* <Text style={style.label}>{`Ex: ${play.formatArrayContent(content.example)}`}</Text> */}
         </TouchableOpacity>
       </CardFlip>

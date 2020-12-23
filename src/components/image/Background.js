@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
-import Color from '../config/Color';
+import Color from '../../config/Color';
 
 const style = StyleSheet.create({
   image: {

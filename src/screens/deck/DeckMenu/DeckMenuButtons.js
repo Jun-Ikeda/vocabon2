@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   View, Text, TouchableOpacity, StyleSheet,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 import Icon from '../../../components/Icon';
 import Color from '../../../config/Color';
@@ -27,7 +28,7 @@ const style = StyleSheet.create({
   },
 });
 
-export default class DeckMenuButtons extends Component {
+class DeckMenuButtons extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -57,7 +58,7 @@ export default class DeckMenuButtons extends Component {
       {
         title: 'Play',
         icon: () => <Icon.Feather name="play" size={iconsize} style={style.icon} />,
-        onPress: () => navigation.navigate('play'),
+        onPress: () => navigation.push('play'),
         textStyle: {},
       },
       {
@@ -181,3 +182,13 @@ export default class DeckMenuButtons extends Component {
     );
   }
 }
+
+DeckMenuButtons.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
+
+DeckMenuButtons.defaultProps = {
+
+};
+
+export default DeckMenuButtons;

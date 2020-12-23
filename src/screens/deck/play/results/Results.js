@@ -1,24 +1,32 @@
 import React, { Component } from 'react';
 import {
-  View, Text, Image, TouchableOpacity, Linking, StyleSheet,
+  View, Text, Image, TouchableOpacity, StyleSheet,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import HeaderWithBack from '../../../../components/header/HeaderWithBack';
-import { DeckGeneral } from '../../../../../dev/TestData';
+// import { DeckGeneral } from '../../../../../dev/TestData';
 
 import Color from '../../../../config/Color';
 import Unsplash from '../../../../config/Unsplash';
+
+const imgHeight = 250;
+const titleFontSize = 20;
 
 const style = StyleSheet.create({
   container: {
     // ...StyleSheet.absoluteFill,
     flex: 1,
   },
+  overlayContainer: {
+    position: 'absolute',
+    right: 0,
+    left: 0,
+  },
   countersContainer: {
-    alignSelf: 'center',
+    flex: 1,
+    paddingHorizontal: 40,
     flexDirection: 'row',
-    width: 240,
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
   },
   counter: {
     alignItems: 'center',
@@ -32,14 +40,16 @@ const style = StyleSheet.create({
     fontSize: 44,
   },
   buttonTitle: {
-    fontSize: 18
-  }
+    fontSize: 18,
+  },
+  button: {
+    borderRadius: 10,
+    paddingVertical: 10,
+    margin: 3,
+    backgroundColor: 'white',
+    alignItems: 'center',
+  },
 });
-const imgHeight = 250;
-const normalFontSize = 15;
-const titleFontSize = 20;
-const wideIndent = 20;
-const narrowIndent = 10;
 
 class PlayResults extends Component {
   constructor(props) {
@@ -76,58 +86,45 @@ class PlayResults extends Component {
   renderHeader = () => {
     const { navigation } = this.props;
     return (
-      // <View style={{
-      //   position: 'absolute',
-      // }}
-      // >
       <HeaderWithBack
         navigation={navigation}
         style={{
           backgroundColor: 'transparent',
         }}
       />
-      // </View>
     );
   };
 
   renderButtons = () => {
     const { right, left } = this.state;
+    const { navigation } = this.props;
     const buttons = [
       {
         title: 'Replay',
         num: `(${right.length + left.length})`,
-        onPress: () => alert('replay'),
+        onPress: () => navigation.push('play'),
       },
       {
         title: 'Play mistaken cards',
         num: `(${left.length})`,
         onPress: () => alert('play mistaken cards'),
       },
-      // {
-      //   title: 'Play chosen cards',
-      //   num:
-      //   onPress: () => alert('play chosen cards'),
-      // },
       {
-        title: 'Go back to Options',
+        title: 'Options', // go back to options
         num: '',
-        onPress: () => alert('go back to options'),
+        onPress: () => navigation.navigate('playoption'),
       },
       {
         title: 'Finish this Deck',
         num: '',
-        onPress: () => alert('finish this deck'),
+        onPress: () => navigation.navigate('home'),
       },
     ];
 
     return buttons.map((button) => (
-      <TouchableOpacity style={{
-        borderRadius: 10,
-        paddingVertical: 10,
-        margin: 3,
-        backgroundColor: 'white',
-        alignItems: 'center',
-      }}
+      <TouchableOpacity
+        style={style.button}
+        onPress={button.onPress}
       >
         <Text style={style.buttonTitle}>{`${button.title} ${button.num}`}</Text>
       </TouchableOpacity>
@@ -152,12 +149,35 @@ class PlayResults extends Component {
     );
   }
 
+  renderMessage = () => {
+    const { right, left } = this.state;
+    let message = '';
+    if (right.length / (right.length + left.length) < 0.4) {
+      message = 'Break your leg!';
+    } else if ( right.length / (right.length + left.length) < 0.6) {
+      message = 'You could do better!';
+    } else if (right.length / (right.length + left.length) < 0.8) {
+      message = 'Almost perfect!';
+    } else {
+      message = 'Well done!';
+    }
+    return (
+      <Text style={{
+        fontSize: titleFontSize,
+        paddingVertical: 10,
+      }}
+      >
+        {message}
+      </Text>
+    );
+  }
+
   render() {
     return (
       <View style={style.container}>
         <View>
           {this.renderThumbnail()}
-          <View style={{ position: 'absolute', right: 0, left: 0 }}>
+          <View style={style.overlayContainer}>
             {this.renderHeader()}
             {this.renderCounter()}
           </View>
@@ -166,15 +186,8 @@ class PlayResults extends Component {
           paddingHorizontal: 40,
         }}
         >
-          <Text style={{
-            fontSize: titleFontSize,
-          }}
-          >
-            Well done!
-          </Text>
-          <View>
-            {this.renderButtons()}
-          </View>
+          {this.renderMessage()}
+          {this.renderButtons()}
         </View>
       </View>
     );
@@ -183,15 +196,9 @@ class PlayResults extends Component {
 
 PlayResults.propTypes = {
   navigation: PropTypes.object.isRequired,
-  // left: PropTypes.array,
-  // right: PropTypes.array,
-  // uri: PropTypes.string,
 };
 
 PlayResults.defaultProps = {
-  // left: [],
-  // right: [],
-  // uri: '',
 };
 
 export default PlayResults;

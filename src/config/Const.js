@@ -43,7 +43,7 @@ export const func = {
   },
 };
 
-export const play = {
+export const deck = {
   formatArrayContent: (array) => {
     let str = '';
     array.forEach((element) => {
@@ -54,7 +54,7 @@ export const play = {
 };
 
 export default {
-  header, carousel, func, play,
+  header, carousel, func, deck,
 };
 
 export const titleMaxLength = 20;
